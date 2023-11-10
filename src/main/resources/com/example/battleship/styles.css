@@ -1,0 +1,20 @@
+#mainWindow{
+    -fx-background-color: rgb(28,28,28);
+}
+
+#buttonsHolder{
+    -fx-background-color: rgb(128,128,128);
+}
+
+.button{
+    -fx-background-color: rgb(128,128,128);
+    -fx-border-color: rgb(65,152,179);
+}
+
+.button:hover{
+    -fx-background-color: rgb(189,189,189);
+}
+
+.button:pressed {
+    -fx-background-insets: 0;
+}
