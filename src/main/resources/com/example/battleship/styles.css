@@ -4,11 +4,12 @@
 
 #buttonsHolder{
     -fx-background-color: rgb(128,128,128);
+    -fx-background-radius: 1.5em;
 }
 
 .button{
     -fx-background-color: rgb(128,128,128);
-    -fx-border-color: rgb(65,152,179);
+    -fx-border-color: rgb(0,183,255);
 }
 
 .button:hover{
@@ -17,4 +18,20 @@
 
 .button:pressed {
     -fx-background-insets: 0;
+}
+
+#availableShips{
+    -fx-background-color: rgb(82,82,82);
+    -fx-background-radius: 1.5em;
+}
+
+#availableLabel {
+    -fx-border-color: rgb(0,183,255);
+    -fx-border-width: 0 0 1 0; /* top, right, bottom, left */
+    -fx-padding: 5px;
+}
+
+#confirmPlacementButton{
+    -fx-background-radius: 5em;
+    -fx-border-width: 0;
 }
