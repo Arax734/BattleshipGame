@@ -10,11 +10,10 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="mainWindow" prefHeight="575.0" prefWidth="897.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.battleship.PrepareField">
+<AnchorPane onKeyPressed="#handleKeyPress" id="mainWindow" prefHeight="575.0" prefWidth="897.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.battleship.PrepareField">
     <children>
         <Pane id="buttonsHolder" layoutX="75.0" layoutY="40.0" prefHeight="440.0" prefWidth="440.0">
             <children>
-                <Button fx:id="square00" layoutX="40.0" layoutY="40.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
                 <Label alignment="CENTER" layoutX="40.0" prefHeight="40.0" prefWidth="40.0" text="A" textFill="WHITE">
                     <font>
                         <Font name="Poppins Bold" size="20.0" />
@@ -175,105 +174,110 @@
                   <DropShadow />
                </effect>
                 </Label>
-                <Button fx:id="square001" layoutX="40.0" layoutY="80.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square002" layoutX="40.0" layoutY="120.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square003" layoutX="40.0" layoutY="160.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square004" layoutX="40.0" layoutY="200.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square005" layoutX="40.0" layoutY="240.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square006" layoutX="40.0" layoutY="280.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square007" layoutX="40.0" layoutY="320.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square008" layoutX="40.0" layoutY="360.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square009" layoutX="40.0" layoutY="400.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square0010" layoutX="80.0" layoutY="40.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square0011" layoutX="80.0" layoutY="80.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square0021" layoutX="80.0" layoutY="120.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square0031" layoutX="80.0" layoutY="160.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square0041" layoutX="80.0" layoutY="200.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square0051" layoutX="80.0" layoutY="240.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square0061" layoutX="80.0" layoutY="280.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square0071" layoutX="80.0" layoutY="320.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square0081" layoutX="80.0" layoutY="360.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square0091" layoutX="80.0" layoutY="400.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square0012" layoutX="120.0" layoutY="40.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square0012" layoutX="120.0" layoutY="80.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square0022" layoutX="120.0" layoutY="120.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square0032" layoutX="120.0" layoutY="160.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square0042" layoutX="120.0" layoutY="200.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square0052" layoutX="120.0" layoutY="240.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square0062" layoutX="120.0" layoutY="280.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square0072" layoutX="120.0" layoutY="320.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square0082" layoutX="120.0" layoutY="360.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square0092" layoutX="120.0" layoutY="400.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square00101" layoutX="160.0" layoutY="40.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square00111" layoutX="160.0" layoutY="80.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square00211" layoutX="160.0" layoutY="120.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square00311" layoutX="160.0" layoutY="160.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square00411" layoutX="160.0" layoutY="200.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square00511" layoutX="160.0" layoutY="240.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square00611" layoutX="160.0" layoutY="280.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square00711" layoutX="160.0" layoutY="320.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square00811" layoutX="160.0" layoutY="360.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square00911" layoutX="160.0" layoutY="400.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square0013" layoutX="200.0" layoutY="40.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square0013" layoutX="200.0" layoutY="80.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square0023" layoutX="200.0" layoutY="120.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square0033" layoutX="200.0" layoutY="160.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square0043" layoutX="200.0" layoutY="200.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square0053" layoutX="200.0" layoutY="240.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square0063" layoutX="200.0" layoutY="280.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square0073" layoutX="200.0" layoutY="320.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square0083" layoutX="200.0" layoutY="360.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square0093" layoutX="200.0" layoutY="400.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square00102" layoutX="240.0" layoutY="40.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square00112" layoutX="240.0" layoutY="80.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square00212" layoutX="240.0" layoutY="120.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square00312" layoutX="240.0" layoutY="160.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square00412" layoutX="240.0" layoutY="200.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square00512" layoutX="240.0" layoutY="240.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square00612" layoutX="240.0" layoutY="280.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square00712" layoutX="240.0" layoutY="320.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square00812" layoutX="240.0" layoutY="360.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square00912" layoutX="240.0" layoutY="400.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square00121" layoutX="280.0" layoutY="40.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square00121" layoutX="280.0" layoutY="80.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square00221" layoutX="280.0" layoutY="120.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square00321" layoutX="280.0" layoutY="160.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square00421" layoutX="280.0" layoutY="200.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square00521" layoutX="280.0" layoutY="240.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square00621" layoutX="280.0" layoutY="280.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square00721" layoutX="280.0" layoutY="320.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square00821" layoutX="280.0" layoutY="360.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square00921" layoutX="280.0" layoutY="400.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square001011" layoutX="320.0" layoutY="40.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square001111" layoutX="320.0" layoutY="80.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square002111" layoutX="320.0" layoutY="120.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square003111" layoutX="320.0" layoutY="160.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square004111" layoutX="320.0" layoutY="200.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square005111" layoutX="320.0" layoutY="240.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square006111" layoutX="320.0" layoutY="280.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square007111" layoutX="320.0" layoutY="320.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square008111" layoutX="320.0" layoutY="360.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square009111" layoutX="320.0" layoutY="400.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square001211" layoutX="360.0" layoutY="40.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square001211" layoutX="360.0" layoutY="80.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square002211" layoutX="360.0" layoutY="120.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square003211" layoutX="360.0" layoutY="160.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square004211" layoutX="360.0" layoutY="200.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square005211" layoutX="360.0" layoutY="240.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square006211" layoutX="360.0" layoutY="280.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square007211" layoutX="360.0" layoutY="320.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square008211" layoutX="360.0" layoutY="360.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square009211" layoutX="360.0" layoutY="400.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square0010111" layoutX="400.0" layoutY="40.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square0011111" layoutX="400.0" layoutY="80.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square0021111" layoutX="400.0" layoutY="120.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square0031111" layoutX="400.0" layoutY="160.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square0041111" layoutX="400.0" layoutY="200.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square0051111" layoutX="400.0" layoutY="240.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square0061111" layoutX="400.0" layoutY="280.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square0071111" layoutX="400.0" layoutY="320.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square0081111" layoutX="400.0" layoutY="360.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-                <Button fx:id="square0091111" layoutX="400.0" layoutY="400.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+            <Pane fx:id="gameHolder" layoutX="40.0" layoutY="39.0" prefHeight="402.0" prefWidth="400.0">
+               <children>
+                      <Button fx:id="square00" layoutY="2.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square10" layoutY="42.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square20" layoutY="82.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square30" layoutY="122.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square40" layoutY="162.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square50" layoutY="202.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square60" layoutY="242.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square70" layoutY="282.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square80" layoutY="322.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square90" layoutY="362.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square01" layoutX="40.0" layoutY="2.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square11" layoutX="40.0" layoutY="42.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square21" layoutX="40.0" layoutY="82.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square31" layoutX="40.0" layoutY="122.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square41" layoutX="40.0" layoutY="162.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square51" layoutX="40.0" layoutY="202.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square61" layoutX="40.0" layoutY="242.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square71" layoutX="40.0" layoutY="282.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square81" layoutX="40.0" layoutY="322.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square91" layoutX="40.0" layoutY="362.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square02" layoutX="80.0" layoutY="2.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square12" layoutX="80.0" layoutY="42.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square22" layoutX="80.0" layoutY="82.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square32" layoutX="80.0" layoutY="122.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square42" layoutX="80.0" layoutY="162.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square52" layoutX="80.0" layoutY="202.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square62" layoutX="80.0" layoutY="242.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square72" layoutX="80.0" layoutY="282.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square82" layoutX="80.0" layoutY="322.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square92" layoutX="80.0" layoutY="362.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square03" layoutX="120.0" layoutY="2.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square13" layoutX="120.0" layoutY="42.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square23" layoutX="120.0" layoutY="82.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square33" layoutX="120.0" layoutY="122.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square43" layoutX="120.0" layoutY="162.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square53" layoutX="120.0" layoutY="202.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square63" layoutX="120.0" layoutY="242.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square73" layoutX="120.0" layoutY="282.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square83" layoutX="120.0" layoutY="322.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square93" layoutX="120.0" layoutY="362.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square04" layoutX="160.0" layoutY="2.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square14" layoutX="160.0" layoutY="42.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square24" layoutX="160.0" layoutY="82.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square34" layoutX="160.0" layoutY="122.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square44" layoutX="160.0" layoutY="162.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square54" layoutX="160.0" layoutY="202.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square64" layoutX="160.0" layoutY="242.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square74" layoutX="160.0" layoutY="282.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square84" layoutX="160.0" layoutY="322.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square94" layoutX="160.0" layoutY="362.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square05" layoutX="200.0" layoutY="2.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square15" layoutX="200.0" layoutY="42.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square25" layoutX="200.0" layoutY="82.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square35" layoutX="200.0" layoutY="122.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square45" layoutX="200.0" layoutY="162.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square55" layoutX="200.0" layoutY="202.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square65" layoutX="200.0" layoutY="242.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square75" layoutX="200.0" layoutY="282.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square85" layoutX="200.0" layoutY="322.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square95" layoutX="200.0" layoutY="362.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square06" layoutX="240.0" layoutY="2.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square16" layoutX="240.0" layoutY="42.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square26" layoutX="240.0" layoutY="82.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square36" layoutX="240.0" layoutY="122.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square46" layoutX="240.0" layoutY="162.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square56" layoutX="240.0" layoutY="202.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square66" layoutX="240.0" layoutY="242.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square76" layoutX="240.0" layoutY="282.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square86" layoutX="240.0" layoutY="322.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square96" layoutX="240.0" layoutY="362.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square07" layoutX="280.0" layoutY="2.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square17" layoutX="280.0" layoutY="42.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square27" layoutX="280.0" layoutY="82.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square37" layoutX="280.0" layoutY="122.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square47" layoutX="280.0" layoutY="162.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square57" layoutX="280.0" layoutY="202.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square67" layoutX="280.0" layoutY="242.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square77" layoutX="280.0" layoutY="282.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square87" layoutX="280.0" layoutY="322.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square97" layoutX="280.0" layoutY="362.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square08" layoutX="320.0" layoutY="2.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square18" layoutX="320.0" layoutY="42.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square28" layoutX="320.0" layoutY="82.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square38" layoutX="320.0" layoutY="122.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square48" layoutX="320.0" layoutY="162.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square58" layoutX="320.0" layoutY="202.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square68" layoutX="320.0" layoutY="242.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square78" layoutX="320.0" layoutY="282.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square88" layoutX="320.0" layoutY="322.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square98" layoutX="320.0" layoutY="362.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square09" layoutX="360.0" layoutY="2.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square19" layoutX="360.0" layoutY="42.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square29" layoutX="360.0" layoutY="82.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square39" layoutX="360.0" layoutY="122.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square49" layoutX="360.0" layoutY="162.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square59" layoutX="360.0" layoutY="202.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square69" layoutX="360.0" layoutY="242.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square79" layoutX="360.0" layoutY="282.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square89" layoutX="360.0" layoutY="322.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                      <Button fx:id="square99" layoutX="360.0" layoutY="362.0" mnemonicParsing="false" onAction="#squareClicked" onMouseEntered="#squareHover" onMouseExited="#squareUnHover" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+               </children>
+            </Pane>
             </children>
         </Pane>
       <Pane fx:id="availableShips" depthTest="DISABLE" layoutX="572.0" layoutY="40.0" prefHeight="440.0" prefWidth="271.0">
@@ -291,7 +295,7 @@
                   <Pane prefHeight="60.0" prefWidth="200.0">
                      <children>
                         <Button fx:id="singleShip" layoutX="116.0" layoutY="10.0" mnemonicParsing="false" onAction="#chooseBattleship" prefHeight="40.0" prefWidth="40.0" />
-                        <Label layoutX="14.0" layoutY="16.0" text="4" textFill="WHITE">
+                        <Label fx:id="singleShipLabel" layoutX="14.0" layoutY="16.0" textFill="WHITE">
                            <font>
                               <Font name="Poppins Bold" size="20.0" />
                            </font>
@@ -312,7 +316,7 @@
                   <Pane prefHeight="60.0" prefWidth="200.0">
                      <children>
                         <Button fx:id="doubleShip" layoutX="96.0" layoutY="10.0" mnemonicParsing="false" onAction="#chooseBattleship" prefHeight="40.0" prefWidth="80.0" />
-                        <Label layoutX="14.0" layoutY="16.0" text="3" textFill="WHITE">
+                        <Label fx:id="doubleShipLabel" layoutX="14.0" layoutY="16.0" textFill="WHITE">
                            <font>
                               <Font name="Poppins Bold" size="20.0" />
                            </font>
@@ -333,7 +337,7 @@
                   <Pane prefHeight="60.0" prefWidth="200.0">
                      <children>
                         <Button fx:id="tripleShip" layoutX="76.0" layoutY="10.0" mnemonicParsing="false" onAction="#chooseBattleship" prefHeight="40.0" prefWidth="120.0" />
-                        <Label layoutX="14.0" layoutY="16.0" text="2" textFill="WHITE">
+                        <Label fx:id="tripleShipLabel" layoutX="14.0" layoutY="16.0" textFill="WHITE">
                            <font>
                               <Font name="Poppins Bold" size="20.0" />
                            </font>
@@ -354,7 +358,7 @@
                   <Pane prefHeight="60.0" prefWidth="200.0">
                      <children>
                         <Button fx:id="quadrupleShip" layoutX="56.0" layoutY="10.0" mnemonicParsing="false" onAction="#chooseBattleship" prefHeight="40.0" prefWidth="160.0" />
-                        <Label layoutX="14.0" layoutY="16.0" text="1" textFill="WHITE">
+                        <Label fx:id="quadrupleShipLabel" layoutX="14.0" layoutY="16.0" textFill="WHITE">
                            <font>
                               <Font name="Poppins Bold" size="20.0" />
                            </font>
