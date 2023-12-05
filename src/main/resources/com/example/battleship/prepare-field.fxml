@@ -10,7 +10,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane onKeyPressed="#handleKeyPress" id="mainWindow" prefHeight="575.0" prefWidth="897.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.battleship.PrepareField">
+<AnchorPane id="mainWindow" onKeyPressed="#handleKeyPress" prefHeight="575.0" prefWidth="897.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.battleship.PrepareField">
     <children>
         <Pane id="buttonsHolder" layoutX="75.0" layoutY="40.0" prefHeight="440.0" prefWidth="440.0">
             <children>
@@ -405,5 +405,15 @@
             </Label>
          </graphic>
       </Button>
+      <Label layoutX="652.0" layoutY="485.0" text="Press &quot;R&quot; to rotate 🚢" textFill="WHITE">
+         <font>
+            <Font name="Poppins Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="619.0" layoutY="485.0" text="Tip:" textFill="#00b7ff">
+         <font>
+            <Font name="Poppins Bold" size="14.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

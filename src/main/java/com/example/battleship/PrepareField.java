@@ -31,6 +31,8 @@ public class PrepareField implements Initializable{
 
     public Button recentHover;
 
+    public boolean canBePlaced;
+
     @FXML
     private Pane gameHolder;
 
@@ -56,6 +58,7 @@ public class PrepareField implements Initializable{
         this.recentHover = null;
         gameHolder.setOnKeyPressed(this::handleKeyPress);
         gameHolder.requestFocus();
+        this.canBePlaced = true;
     }
     @FXML
     private void handleKeyPress(KeyEvent event) {
@@ -68,7 +71,11 @@ public class PrepareField implements Initializable{
     }
 
     private void onRKeyPressed() {
+        this.canBePlaced = true;
+        String backgroundColorStyleAdd = "-fx-background-color: rgb(107,255,151)";
+        String backgroundColorStyle = "-fx-background-color: rgb(128,128,128);";
         if (this.recentHover != null && !this.tempChanged.isEmpty()) {
+            this.recentHover.setStyle(backgroundColorStyleAdd);
             Button pattern = this.tempChanged.get(0);
             String buttonID = pattern.getId();
             int x = Character.getNumericValue(buttonID.charAt(buttonID.length() - 1));
@@ -78,91 +85,193 @@ public class PrepareField implements Initializable{
             String recentID = recent.getId();
             int xRecent = Character.getNumericValue(recentID.charAt(recentID.length() - 1));
             int yRecent = Character.getNumericValue(recentID.charAt(recentID.length() - 2));
-
-            String backgroundColorStyleAdd = "-fx-background-color: yellow";
-
-            String backgroundColorStyle = "-fx-background-color: rgb(128,128,128);";
             for (Button button : this.tempChanged) {
                 button.setStyle(backgroundColorStyle);
             }
             this.tempChanged.clear();
             if ("doubleShip".equals(this.getSelectedButton().getId())) {
-                if (x == xRecent + 1) {
-                    this.getButton(xRecent, yRecent + 1).setStyle(backgroundColorStyleAdd);
-                    this.tempChanged.add(this.getButton(xRecent, yRecent + 1));
-                } else if (y == yRecent + 1) {
-                    this.getButton(xRecent - 1, yRecent).setStyle(backgroundColorStyleAdd);
-                    this.tempChanged.add(this.getButton(xRecent - 1, yRecent));
-                } else if (x == xRecent - 1) {
-                    this.getButton(xRecent, yRecent - 1).setStyle(backgroundColorStyleAdd);
-                    this.tempChanged.add(this.getButton(xRecent, yRecent - 1));
-                } else {
-                    this.getButton(xRecent + 1, yRecent).setStyle(backgroundColorStyleAdd);
-                    this.tempChanged.add(this.getButton(xRecent + 1, yRecent));
+                Button rotated = null;
+                while(rotated == null){
+                    if( x == xRecent + 1){
+                        if(this.getButton(xRecent, yRecent + 1) == null ||
+                                this.getPlacement(xRecent, yRecent + 1)){
+                            x -= 1;
+                            y += 1;
+                        }else{
+                            rotated = this.getButton(xRecent, yRecent + 1);
+                        }
+                    }
+                    else if (y == yRecent + 1){
+                        if(this.getButton(xRecent - 1, yRecent) == null ||
+                                this.getPlacement(xRecent - 1, yRecent)){
+                            x -= 1;
+                            y -= 1;
+                        }else{
+                            rotated = this.getButton(xRecent - 1, yRecent);
+                        }
+                    }
+                    else if (x == xRecent - 1) {
+                        if(this.getButton(xRecent, yRecent - 1) == null ||
+                                this.getPlacement(xRecent, yRecent - 1)){
+                            x += 1;
+                            y -= 1;
+                        }else{
+                            rotated = this.getButton(xRecent, yRecent - 1);
+                        }
+                    }
+                    else {
+                        if(this.getButton(xRecent + 1, yRecent) == null ||
+                                this.getPlacement(xRecent + 1, yRecent)){
+                            x += 1;
+                            y += 1;
+                        }else{
+                            rotated = this.getButton(xRecent + 1, yRecent);
+                        }
+                    }
                 }
+                rotated.setStyle(backgroundColorStyleAdd);
+                this.tempChanged.add(rotated);
             }
             else if("tripleShip".equals(this.getSelectedButton().getId())){
-                if (x == xRecent + 1) {
-                    this.getButton(xRecent, yRecent + 1).setStyle(backgroundColorStyleAdd);
-                    this.getButton(xRecent, yRecent + 2).setStyle(backgroundColorStyleAdd);
-                    this.tempChanged.add(this.getButton(xRecent, yRecent + 1));
-                    this.tempChanged.add(this.getButton(xRecent, yRecent + 2));
-                } else if (y == yRecent + 1) {
-                    this.getButton(xRecent - 1, yRecent).setStyle(backgroundColorStyleAdd);
-                    this.getButton(xRecent - 2, yRecent).setStyle(backgroundColorStyleAdd);
-                    this.tempChanged.add(this.getButton(xRecent - 1, yRecent));
-                    this.tempChanged.add(this.getButton(xRecent - 2, yRecent));
-                } else if (x == xRecent - 1) {
-                    this.getButton(xRecent, yRecent - 1).setStyle(backgroundColorStyleAdd);
-                    this.getButton(xRecent, yRecent - 2).setStyle(backgroundColorStyleAdd);
-                    this.tempChanged.add(this.getButton(xRecent, yRecent - 1));
-                    this.tempChanged.add(this.getButton(xRecent, yRecent - 2));
-                } else {
-                    this.getButton(xRecent + 1, yRecent).setStyle(backgroundColorStyleAdd);
-                    this.getButton(xRecent + 2, yRecent).setStyle(backgroundColorStyleAdd);
-                    this.tempChanged.add(this.getButton(xRecent + 1, yRecent));
-                    this.tempChanged.add(this.getButton(xRecent + 2, yRecent));
+                Button rotated = null;
+                Button rotated2 = null;
+                while(rotated == null || rotated2 == null){
+                    if( x == xRecent + 1){
+                        if(this.getButton(xRecent, yRecent + 1) == null ||
+                                this.getButton(xRecent, yRecent + 2) == null ||
+                                this.getPlacement(xRecent, yRecent + 1) ||
+                                this.getPlacement(xRecent, yRecent + 2)){
+                            x -= 1;
+                            y += 1;
+                        }else{
+                            rotated = this.getButton(xRecent, yRecent + 1);
+                            rotated2 = this.getButton(xRecent, yRecent + 2);
+                        }
+                    }
+                    else if (y == yRecent + 1){
+                        if(this.getButton(xRecent - 1, yRecent) == null ||
+                                this.getButton(xRecent - 2, yRecent) == null ||
+                                this.getPlacement(xRecent - 1, yRecent) ||
+                                this.getPlacement(xRecent - 2, yRecent)){
+                            x -= 1;
+                            y -= 1;
+                        }else{
+                            rotated = this.getButton(xRecent - 1, yRecent);
+                            rotated2 = this.getButton(xRecent - 2, yRecent);
+                        }
+                    }
+                    else if (x == xRecent - 1) {
+                        if(this.getButton(xRecent, yRecent - 1) == null ||
+                                this.getButton(xRecent, yRecent - 2) == null ||
+                                this.getPlacement(xRecent, yRecent - 1) ||
+                                this.getPlacement(xRecent, yRecent - 2)){
+                            x += 1;
+                            y -= 1;
+                        }else{
+                            rotated = this.getButton(xRecent, yRecent - 1);
+                            rotated2 = this.getButton(xRecent, yRecent - 2);
+                        }
+                    }
+                    else {
+                        if(this.getButton(xRecent + 1, yRecent) == null ||
+                                this.getButton(xRecent + 2, yRecent) == null ||
+                                this.getPlacement(xRecent + 1, yRecent) ||
+                                this.getPlacement(xRecent + 2, yRecent)){
+                            x += 1;
+                            y += 1;
+                        }else{
+                            rotated = this.getButton(xRecent + 1, yRecent);
+                            rotated2 = this.getButton(xRecent + 2, yRecent);
+                        }
+                    }
                 }
+                rotated.setStyle(backgroundColorStyleAdd);
+                rotated2.setStyle(backgroundColorStyleAdd);
+                this.tempChanged.add(rotated);
+                this.tempChanged.add(rotated2);
             }
             else if("quadrupleShip".equals(this.getSelectedButton().getId())){
-                if (x == xRecent + 1) {
-                    this.getButton(xRecent, yRecent + 1).setStyle(backgroundColorStyleAdd);
-                    this.getButton(xRecent, yRecent + 2).setStyle(backgroundColorStyleAdd);
-                    this.getButton(xRecent, yRecent + 3).setStyle(backgroundColorStyleAdd);
-                    this.tempChanged.add(this.getButton(xRecent, yRecent + 1));
-                    this.tempChanged.add(this.getButton(xRecent, yRecent + 2));
-                    this.tempChanged.add(this.getButton(xRecent, yRecent + 3));
-                } else if (y == yRecent + 1) {
-                    this.getButton(xRecent - 1, yRecent).setStyle(backgroundColorStyleAdd);
-                    this.getButton(xRecent - 2, yRecent).setStyle(backgroundColorStyleAdd);
-                    this.getButton(xRecent - 3, yRecent).setStyle(backgroundColorStyleAdd);
-                    this.tempChanged.add(this.getButton(xRecent - 1, yRecent));
-                    this.tempChanged.add(this.getButton(xRecent - 2, yRecent));
-                    this.tempChanged.add(this.getButton(xRecent - 3, yRecent));
-                } else if (x == xRecent - 1) {
-                    this.getButton(xRecent, yRecent - 1).setStyle(backgroundColorStyleAdd);
-                    this.getButton(xRecent, yRecent - 2).setStyle(backgroundColorStyleAdd);
-                    this.getButton(xRecent, yRecent - 3).setStyle(backgroundColorStyleAdd);
-                    this.tempChanged.add(this.getButton(xRecent, yRecent - 1));
-                    this.tempChanged.add(this.getButton(xRecent, yRecent - 2));
-                    this.tempChanged.add(this.getButton(xRecent, yRecent - 3));
-                } else {
-                    this.getButton(xRecent + 1, yRecent).setStyle(backgroundColorStyleAdd);
-                    this.getButton(xRecent + 2, yRecent).setStyle(backgroundColorStyleAdd);
-                    this.getButton(xRecent + 3, yRecent).setStyle(backgroundColorStyleAdd);
-                    this.tempChanged.add(this.getButton(xRecent + 1, yRecent));
-                    this.tempChanged.add(this.getButton(xRecent + 2, yRecent));
-                    this.tempChanged.add(this.getButton(xRecent + 3, yRecent));
+                Button rotated = null;
+                Button rotated2 = null;
+                Button rotated3 = null;
+                while(rotated == null || rotated2 == null || rotated3 == null){
+                    if( x == xRecent + 1){
+                        if(this.getButton(xRecent, yRecent + 1) == null ||
+                                this.getButton(xRecent, yRecent + 2) == null ||
+                                this.getButton(xRecent, yRecent + 3) == null ||
+                                this.getPlacement(xRecent, yRecent + 1) ||
+                                this.getPlacement(xRecent, yRecent + 2) ||
+                                this.getPlacement(xRecent, yRecent + 3)){
+                            x -= 1;
+                            y += 1;
+                        }else{
+                            rotated = this.getButton(xRecent, yRecent + 1);
+                            rotated2 = this.getButton(xRecent, yRecent + 2);
+                            rotated3 = this.getButton(xRecent, yRecent + 3);
+                        }
+                    }
+                    else if (y == yRecent + 1){
+                        if(this.getButton(xRecent - 1, yRecent) == null ||
+                                this.getButton(xRecent - 2, yRecent) == null ||
+                                this.getButton(xRecent - 3, yRecent) == null ||
+                                this.getPlacement(xRecent - 1, yRecent) ||
+                                this.getPlacement(xRecent - 2, yRecent) ||
+                                this.getPlacement(xRecent - 3, yRecent)){
+                            x -= 1;
+                            y -= 1;
+                        }else{
+                            rotated = this.getButton(xRecent - 1, yRecent);
+                            rotated2 = this.getButton(xRecent - 2, yRecent);
+                            rotated3 = this.getButton(xRecent - 3, yRecent);
+                        }
+                    }
+                    else if (x == xRecent - 1) {
+                        if(this.getButton(xRecent, yRecent - 1) == null ||
+                                this.getButton(xRecent, yRecent - 2) == null ||
+                                this.getButton(xRecent, yRecent - 3) == null ||
+                                this.getPlacement(xRecent, yRecent - 1) ||
+                                this.getPlacement(xRecent, yRecent - 2) ||
+                                this.getPlacement(xRecent, yRecent - 3)){
+                            x += 1;
+                            y -= 1;
+                        }else{
+                            rotated = this.getButton(xRecent, yRecent - 1);
+                            rotated2 = this.getButton(xRecent, yRecent - 2);
+                            rotated3 = this.getButton(xRecent, yRecent - 3);
+                        }
+                    }
+                    else {
+                        if(this.getButton(xRecent + 1, yRecent) == null ||
+                                this.getButton(xRecent + 2, yRecent) == null ||
+                                this.getButton(xRecent + 3, yRecent) == null ||
+                                this.getPlacement(xRecent + 1, yRecent) ||
+                                this.getPlacement(xRecent + 2, yRecent) ||
+                                this.getPlacement(xRecent + 3, yRecent)){
+                            x += 1;
+                            y += 1;
+                        }else{
+                            rotated = this.getButton(xRecent + 1, yRecent);
+                            rotated2 = this.getButton(xRecent + 2, yRecent);
+                            rotated3 = this.getButton(xRecent + 3, yRecent);
+                        }
+                    }
                 }
+                rotated.setStyle(backgroundColorStyleAdd);
+                rotated2.setStyle(backgroundColorStyleAdd);
+                rotated3.setStyle(backgroundColorStyleAdd);
+                this.tempChanged.add(rotated);
+                this.tempChanged.add(rotated2);
+                this.tempChanged.add(rotated3);
             }
+            this.checkAround(this.recentHover);
         }
     }
 
     @FXML
     protected void squareHover(MouseEvent event) {
+        this.canBePlaced = true;
         Button hovered = (Button) event.getSource();
-        String backgroundColorStyle = "-fx-background-color: lime";
-        String backgroundColorStyleAdd = "-fx-background-color: yellow";
+        String backgroundColorStyle = "-fx-background-color: rgb(107,255,151)";
 
         if (this.getSelectedButton() != null) {
             this.recentHover = hovered;
@@ -172,30 +281,80 @@ public class PrepareField implements Initializable{
 
             hovered.setStyle(backgroundColorStyle);
 
-            if ("doubleShip".equals(this.getSelectedButton().getId()) && this.getButton(x + 1, y) != null) {
-                this.getButton(x + 1, y).setStyle(backgroundColorStyleAdd);
-                this.tempChanged.add(this.getButton(x + 1, y));
-            } else if ("tripleShip".equals(this.getSelectedButton().getId()) && this.getButton(x + 1, y) != null && this.getButton(x + 2, y) != null) {
-                this.getButton(x + 1, y).setStyle(backgroundColorStyleAdd);
-                this.getButton(x + 2, y).setStyle(backgroundColorStyleAdd);
-                this.tempChanged.add(this.getButton(x + 1, y));
-                this.tempChanged.add(this.getButton(x + 2, y));
-            } else if ("quadrupleShip".equals(this.getSelectedButton().getId()) && this.getButton(x + 1, y) != null && this.getButton(x + 2, y) != null && this.getButton(x + 3, y) != null) {
-                this.getButton(x + 1, y).setStyle(backgroundColorStyleAdd);
-                this.getButton(x + 2, y).setStyle(backgroundColorStyleAdd);
-                this.getButton(x + 3, y).setStyle(backgroundColorStyleAdd);
-                this.tempChanged.add(this.getButton(x + 1, y));
-                this.tempChanged.add(this.getButton(x + 2, y));
-                this.tempChanged.add(this.getButton(x + 3, y));
+            if ("doubleShip".equals(this.getSelectedButton().getId())) {
+                if(this.getButton(x+1, y) == null || this.getPlacement(x + 1, y)){
+                    if(this.getButton(x, y+1) == null || this.getPlacement(x, y+1)){
+                        this.getButton(x-1, y).setStyle(backgroundColorStyle);
+                        this.tempChanged.add(this.getButton(x-1, y));
+                    }else{
+                        this.getButton(x, y+1).setStyle(backgroundColorStyle);
+                        this.tempChanged.add(this.getButton(x, y+1));
+                    }
+                }else{
+                    this.getButton(x + 1, y).setStyle(backgroundColorStyle);
+                    this.tempChanged.add(this.getButton(x + 1, y));
+                }
+            } else if ("tripleShip".equals(this.getSelectedButton().getId())) {
+                if(this.getButton(x+1, y) == null || this.getButton(x+2, y) == null ||
+                        this.getPlacement(x + 1, y) || this.getPlacement(x + 2, y)){
+                    if(this.getButton(x, y+1) == null || this.getButton(x, y+2) == null ||
+                            this.getPlacement(x, y+1) || this.getPlacement(x, y+2)){
+                        this.getButton(x-1, y).setStyle(backgroundColorStyle);
+                        this.getButton(x-2, y).setStyle(backgroundColorStyle);
+                        this.tempChanged.add(this.getButton(x-1, y));
+                        this.tempChanged.add(this.getButton(x-2, y));
+                    }else{
+                        this.getButton(x, y+1).setStyle(backgroundColorStyle);
+                        this.getButton(x, y+2).setStyle(backgroundColorStyle);
+                        this.tempChanged.add(this.getButton(x, y+1));
+                        this.tempChanged.add(this.getButton(x, y+2));
+                    }
+                }else{
+                    this.getButton(x + 1, y).setStyle(backgroundColorStyle);
+                    this.getButton(x + 2, y).setStyle(backgroundColorStyle);
+                    this.tempChanged.add(this.getButton(x + 1, y));
+                    this.tempChanged.add(this.getButton(x + 2, y));
+                }
+            } else if ("quadrupleShip".equals(this.getSelectedButton().getId())) {
+                if(this.getButton(x+1, y) == null || this.getButton(x+2, y) == null ||
+                this.getButton(x+3, y) == null || this.getPlacement(x + 1, y) ||
+                        this.getPlacement(x + 2, y) || this.getPlacement(x + 3, y)){
+                    if(this.getButton(x, y+1) == null || this.getButton(x, y+2) == null ||
+                    this.getButton(x, y+3) == null || this.getPlacement(x, y+1) ||
+                            this.getPlacement(x, y+2) || this.getPlacement(x, y+3)){
+                        this.getButton(x - 1, y).setStyle(backgroundColorStyle);
+                        this.getButton(x - 2, y).setStyle(backgroundColorStyle);
+                        this.getButton(x - 3, y).setStyle(backgroundColorStyle);
+                        this.tempChanged.add(this.getButton(x - 1, y));
+                        this.tempChanged.add(this.getButton(x - 2, y));
+                        this.tempChanged.add(this.getButton(x - 3, y));
+                    }else{
+                        this.getButton(x, y+1).setStyle(backgroundColorStyle);
+                        this.getButton(x, y+2).setStyle(backgroundColorStyle);
+                        this.getButton(x, y+3).setStyle(backgroundColorStyle);
+                        this.tempChanged.add(this.getButton(x, y+1));
+                        this.tempChanged.add(this.getButton(x, y+2));
+                        this.tempChanged.add(this.getButton(x, y+3));
+                    }
+                }else{
+                    this.getButton(x + 1, y).setStyle(backgroundColorStyle);
+                    this.getButton(x + 2, y).setStyle(backgroundColorStyle);
+                    this.getButton(x + 3, y).setStyle(backgroundColorStyle);
+                    this.tempChanged.add(this.getButton(x + 1, y));
+                    this.tempChanged.add(this.getButton(x + 2, y));
+                    this.tempChanged.add(this.getButton(x + 3, y));
+                }
             }
         } else {
             String backgroundColorStyleGray = "-fx-background-color: lightgray";
             hovered.setStyle(backgroundColorStyleGray);
         }
+        this.checkAround(hovered);
     }
 
     @FXML
     protected void squareUnHover(MouseEvent event) {
+        this.canBePlaced = true;
         this.recentHover = null;
         Button hovered = (Button) (event.getSource());
         String backgroundColorStyle = "-fx-background-color: rgb(128,128,128);";
@@ -212,11 +371,10 @@ public class PrepareField implements Initializable{
         int x = Character.getNumericValue(xChar);
         char yChar = buttonID.charAt(buttonID.length() - 2);
         int y = Character.getNumericValue(yChar);
-        if(this.getSelectedButton() != null) {
+        if(this.getSelectedButton() != null && this.canBePlaced) {
             this.setPlacement(x,y, true);
             Button clicked = (Button) (event.getSource());
             this.getSelectedButton().setUserData((int) this.getSelectedButton().getUserData() - 1);
-            String backgroundColorStyleAdd = "-fx-background-color: yellow";
             String backgroundColorStyle = "-fx-background-color: cyan";
             clicked.setStyle(backgroundColorStyle);
             clicked.setOnMouseExited(null);
@@ -291,6 +449,9 @@ public class PrepareField implements Initializable{
         this.battleField = battleField;
     }
     public boolean getPlacement(int x, int y){
+        if(this.getButton(x,y) == null){
+            return false;
+        }
         return this.getBattleField()[y][x];
     }
     public void setPlacement(int x, int y, boolean state){
@@ -315,10 +476,43 @@ public class PrepareField implements Initializable{
         return null;
     }
     public void showPlacement(){
-        for(int x=0; x<this.battleField.length; x++){
+        for (boolean[] booleans : this.battleField) {
             System.out.println();
-            for(int y=0; y<this.battleField.length; y++){
-                System.out.print(this.battleField[x][y]+" ");
+            for (int y = 0; y < this.battleField.length; y++) {
+                System.out.print(booleans[y] + " ");
+            }
+        }
+    }
+    public void checkAround(Button mainButton){
+        String backgroundColorStyle = "-fx-background-color: rgb(232,95,95);";
+        String mainID = mainButton.getId();
+        int xMain = Character.getNumericValue(mainID.charAt(mainID.length() - 1));
+        int yMain = Character.getNumericValue(mainID.charAt(mainID.length() - 2));
+        if(this.getPlacement(xMain+1, yMain) || this.getPlacement(xMain+1, yMain+1) ||
+                this.getPlacement(xMain, xMain+1) || this.getPlacement(xMain-1, yMain+1) ||
+                this.getPlacement(xMain-1, yMain) || this.getPlacement(xMain-1, yMain-1) ||
+                this.getPlacement(xMain, yMain-1) || this.getPlacement(xMain+1, yMain-1)){
+            mainButton.setStyle(backgroundColorStyle);
+            for(Button ship : this.tempChanged){
+                ship.setStyle(backgroundColorStyle);
+            }
+            this.canBePlaced = false;
+            return;
+        }
+        for(Button shipPart : this.tempChanged){
+            String shipPartID = shipPart.getId();
+            int x = Character.getNumericValue(shipPartID.charAt(shipPartID.length() - 1));
+            int y = Character.getNumericValue(shipPartID.charAt(shipPartID.length() - 2));
+            if(this.getPlacement(x+1, y) || this.getPlacement(x+1, y+1) ||
+                    this.getPlacement(x, y+1) || this.getPlacement(x-1, y+1) ||
+                    this.getPlacement(x-1, y) || this.getPlacement(x-1, y-1) ||
+                    this.getPlacement(x, y-1) || this.getPlacement(x+1, y-1)){
+                mainButton.setStyle(backgroundColorStyle);
+                for(Button ship : this.tempChanged){
+                    ship.setStyle(backgroundColorStyle);
+                }
+                this.canBePlaced = false;
+                return;
             }
         }
     }
