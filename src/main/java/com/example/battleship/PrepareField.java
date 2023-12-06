@@ -299,10 +299,18 @@ public class PrepareField implements Initializable{
                         this.getPlacement(x + 1, y) || this.getPlacement(x + 2, y)){
                     if(this.getButton(x, y+1) == null || this.getButton(x, y+2) == null ||
                             this.getPlacement(x, y+1) || this.getPlacement(x, y+2)){
-                        this.getButton(x-1, y).setStyle(backgroundColorStyle);
-                        this.getButton(x-2, y).setStyle(backgroundColorStyle);
-                        this.tempChanged.add(this.getButton(x-1, y));
-                        this.tempChanged.add(this.getButton(x-2, y));
+                        if(this.getButton(x-1, y) == null || this.getButton(x-2, y) == null ||
+                                this.getPlacement(x-1, y) || this.getPlacement(x-2, y)){
+                            this.canBePlaced = false;
+                            String basicStyle = "-fx-background-color: lightgray;";
+                            hovered.setStyle(basicStyle);
+                            return;
+                        }else{
+                            this.getButton(x-1, y).setStyle(backgroundColorStyle);
+                            this.getButton(x-2, y).setStyle(backgroundColorStyle);
+                            this.tempChanged.add(this.getButton(x-1, y));
+                            this.tempChanged.add(this.getButton(x-2, y));
+                        }
                     }else{
                         this.getButton(x, y+1).setStyle(backgroundColorStyle);
                         this.getButton(x, y+2).setStyle(backgroundColorStyle);
@@ -322,12 +330,22 @@ public class PrepareField implements Initializable{
                     if(this.getButton(x, y+1) == null || this.getButton(x, y+2) == null ||
                     this.getButton(x, y+3) == null || this.getPlacement(x, y+1) ||
                             this.getPlacement(x, y+2) || this.getPlacement(x, y+3)){
-                        this.getButton(x - 1, y).setStyle(backgroundColorStyle);
-                        this.getButton(x - 2, y).setStyle(backgroundColorStyle);
-                        this.getButton(x - 3, y).setStyle(backgroundColorStyle);
-                        this.tempChanged.add(this.getButton(x - 1, y));
-                        this.tempChanged.add(this.getButton(x - 2, y));
-                        this.tempChanged.add(this.getButton(x - 3, y));
+                        if(this.getButton(x-1, y) == null || this.getButton(x-2, y) == null ||
+                                this.getButton(x-3, y) == null || this.getPlacement(x-1, y) ||
+                                this.getPlacement(x-2, y) || this.getPlacement(x-3, y)){
+                                this.canBePlaced = false;
+                                String basicStyle = "-fx-background-color: lightgray;";
+                                hovered.setStyle(basicStyle);
+                                return;
+
+                        }else{
+                            this.getButton(x - 1, y).setStyle(backgroundColorStyle);
+                            this.getButton(x - 2, y).setStyle(backgroundColorStyle);
+                            this.getButton(x - 3, y).setStyle(backgroundColorStyle);
+                            this.tempChanged.add(this.getButton(x - 1, y));
+                            this.tempChanged.add(this.getButton(x - 2, y));
+                            this.tempChanged.add(this.getButton(x - 3, y));
+                        }
                     }else{
                         this.getButton(x, y+1).setStyle(backgroundColorStyle);
                         this.getButton(x, y+2).setStyle(backgroundColorStyle);
@@ -484,17 +502,24 @@ public class PrepareField implements Initializable{
         }
     }
     public void checkAround(Button mainButton){
+        if(this.selectedButton == null){
+            String basicStyle = "-fx-background-color: lightgray;";
+            mainButton.setStyle(basicStyle);
+            return;
+        }
         String backgroundColorStyle = "-fx-background-color: rgb(232,95,95);";
         String mainID = mainButton.getId();
         int xMain = Character.getNumericValue(mainID.charAt(mainID.length() - 1));
         int yMain = Character.getNumericValue(mainID.charAt(mainID.length() - 2));
         if(this.getPlacement(xMain+1, yMain) || this.getPlacement(xMain+1, yMain+1) ||
-                this.getPlacement(xMain, xMain+1) || this.getPlacement(xMain-1, yMain+1) ||
+                this.getPlacement(xMain, yMain+1) || this.getPlacement(xMain-1, yMain+1) ||
                 this.getPlacement(xMain-1, yMain) || this.getPlacement(xMain-1, yMain-1) ||
                 this.getPlacement(xMain, yMain-1) || this.getPlacement(xMain+1, yMain-1)){
             mainButton.setStyle(backgroundColorStyle);
-            for(Button ship : this.tempChanged){
-                ship.setStyle(backgroundColorStyle);
+            if(!this.tempChanged.isEmpty()){
+                for(Button ship : this.tempChanged){
+                    ship.setStyle(backgroundColorStyle);
+                }
             }
             this.canBePlaced = false;
             return;
