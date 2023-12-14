@@ -8,4 +8,8 @@ module com.example.tictactoe {
 
     opens com.example.battleship to javafx.fxml;
     exports com.example.battleship;
+    exports com.example.battleship.gameFunctionality;
+    opens com.example.battleship.gameFunctionality to javafx.fxml;
+    exports com.example.battleship.roomConnection;
+    opens com.example.battleship.roomConnection to javafx.fxml;
 }

@@ -10,7 +10,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="mainWindow" onKeyPressed="#handleKeyPress" prefHeight="575.0" prefWidth="897.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.battleship.PrepareField">
+<AnchorPane id="mainWindow" onKeyPressed="#handleKeyPress" prefHeight="575.0" prefWidth="897.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.battleship.gameFunctionality.PrepareField">
     <children>
         <Pane id="buttonsHolder" layoutX="75.0" layoutY="40.0" prefHeight="440.0" prefWidth="440.0">
             <children>
@@ -376,6 +376,28 @@
                         </Label>
                      </children>
                   </Pane>
+                  <Button fx:id="resetPlacementButton" mnemonicParsing="false" onAction="#resetPlacement" prefHeight="30.0" prefWidth="72.0" textFill="RED">
+                     <font>
+                        <Font name="Poppins Bold" size="14.0" />
+                     </font>
+                     <effect>
+                        <DropShadow height="39.72" radius="19.36" spread="0.25" width="39.72">
+                           <color>
+                              <Color red="1.0" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                     <graphic>
+                        <Label text="Reset" textFill="RED">
+                           <font>
+                              <Font name="Poppins Bold" size="14.0" />
+                           </font>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </Label>
+                     </graphic>
+                  </Button>
                </children>
                <opaqueInsets>
                   <Insets />

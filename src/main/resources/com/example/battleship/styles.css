@@ -31,7 +31,7 @@
     -fx-padding: 5px;
 }
 
-#confirmPlacementButton{
+#confirmPlacementButton, #resetPlacementButton{
     -fx-background-radius: 5em;
     -fx-border-width: 0;
 }
