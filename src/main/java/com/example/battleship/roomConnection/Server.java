@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+<<<<<<< HEAD
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -30,6 +31,25 @@ public class Server {
     public void start() {
         try (ServerSocket serverSocket = new ServerSocket(59090)) {
             System.out.println("Server is running...");
+=======
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+
+public class Server {
+    private Set<PrintWriter> clients = new HashSet<>();
+    private Map<String, Set<PrintWriter>> roomClients = new ConcurrentHashMap<>();
+
+    public static void main(String[] args) {
+        new Server().start();
+    }
+
+    public void start() {
+        try (ServerSocket serverSocket = new ServerSocket(59090)) {
+            System.out.println("Server is running...");
+
+>>>>>>> 566737c10a6baa9b2553fdcb49ab4d80fc0378f0
             while (true) {
                 Socket socket = serverSocket.accept();
                 PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
@@ -42,6 +62,7 @@ public class Server {
         }
     }
 
+<<<<<<< HEAD
     public Room getRoom(String roomId) {
         return rooms.get(roomId);
     }
@@ -57,12 +78,20 @@ public class Server {
     }
 
     private class Handler implements Runnable {
+=======
+    private class Handler implements Runnable {
+        private Socket socket;
+>>>>>>> 566737c10a6baa9b2553fdcb49ab4d80fc0378f0
         private BufferedReader in;
         private PrintWriter out;
         private String username;
         private String currentRoom;
 
         public Handler(Socket socket) {
+<<<<<<< HEAD
+=======
+            this.socket = socket;
+>>>>>>> 566737c10a6baa9b2553fdcb49ab4d80fc0378f0
             try {
                 in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 out = new PrintWriter(socket.getOutputStream(), true);
