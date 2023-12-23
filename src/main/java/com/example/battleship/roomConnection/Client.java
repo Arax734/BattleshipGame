@@ -1,99 +1,74 @@
 package com.example.battleship.roomConnection;
 
+import com.example.battleship.HelloApplication;
+import javafx.application.Platform;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-public class Client implements Runnable {
+public class Client extends Thread {
     private final String username;
-    private final Socket clientSocket;
-    private final BufferedReader in;
-    private final PrintWriter out;
-    private Room room;
 
-    public Client(Socket clientSocket, String username) throws IOException {
+    public Client(String username) {
         this.username = username;
-        this.clientSocket = clientSocket;
-        this.in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-        this.out = new PrintWriter(clientSocket.getOutputStream(), true);
-        this.room = null;
     }
 
     @Override
     public void run() {
         try {
-            System.out.println("New client connected: " + clientSocket.getInetAddress().getHostAddress());
+            Socket socket = new Socket("localhost", 59090);
+            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 
-            // Klient wybiera pokój (możesz dostosować to do swoich potrzeb)
-            chooseRoom();
+            Platform.runLater(() -> {
+                try {
+                    FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("join-room.fxml"));
+                    Scene scene = new Scene(fxmlLoader.load());
+
+                    if(Server.getInstance().getRoom("room1") != null){
+                        if(Server.getInstance().getRoom("room1").getClients().size() >= 2){
+                            System.out.println("Room is full");
+                        }
+                        else{
+                            Server.getInstance().getRoom("room1").getClients().add(this);
+                            System.out.println(this.username+" joined room1");
+                            System.out.println("Players: "+Server.getInstance().getRoom("room1").getClients().size());
+                        }
+                    }
+                    else{
+                        System.out.println("Creating new room");
+                        Server.getInstance().getRooms().put("room1", new Room("room1"));
+                        Server.getInstance().getRoom("room1").getClients().add(this);
+                        System.out.println(this.username+" joined room1");
+                        System.out.println("Players: "+Server.getInstance().getRoom("room1").getClients().size());
+                    }
+
+                    Stage prepareFieldStage = new Stage();
+                    prepareFieldStage.setTitle("Join Room - "+this.username);
+                    prepareFieldStage.setScene(scene);
+                    prepareFieldStage.setResizable(false);
+
+                    prepareFieldStage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
 
             while (true) {
                 String message = in.readLine();
-                if (message == null) {
-                    break;
+                if (message != null) {
+                    System.out.println(message);
                 }
-
-                // Obsługa otrzymanej wiadomości
-                System.out.println("Received from client " + clientSocket.getInetAddress().getHostAddress() + ": " + message);
-
-                // Przesłanie wiadomości do innych klientów w pokoju
-                room.getClients().forEach(client -> {
-                    if (!client.equals(this)) {
-                        client.sendMessage(message);
-                    }
-                });
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            closeConnection();
-        }
-    }
 
-    private void chooseRoom() {
-        // Klient wybiera pokój (możesz dostosować to do swoich potrzeb)
-        sendMessage("Choose a room (e.g., JOIN_ROOM 1): ");
-        try {
-            String joinRoomMessage = in.readLine();
-            String[] parts = joinRoomMessage.split(" ");
-            if (parts.length == 2 && parts[0].equals("JOIN_ROOM")) {
-                int roomId = Integer.parseInt(parts[1]);
-                room = Server.getInstance().getRoom(String.valueOf(roomId));
-                if (room == null) {
-                    room = Server.getInstance().createRoom(String.valueOf(roomId));
-                }
-
-                if (!room.isFull()) {
-                    room.addClient(this);
-                    sendMessage("Joined room " + roomId);
-                } else {
-                    sendMessage("Room is full. Disconnecting...");
-                    closeConnection();
-                }
-            } else {
-                sendMessage("Invalid room selection. Disconnecting...");
-                closeConnection();
-            }
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public void sendMessage(String message) {
-        out.println(message);
-    }
-
-    private void closeConnection() {
-        try {
-            clientSocket.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public String getUsername() {
-        return username;
     }
 }
