@@ -1,6 +1,7 @@
 package com.example.battleship.roomConnection;
 
 import com.example.battleship.HelloApplication;
+import com.example.battleship.gameFunctionality.JoinRoom;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -18,7 +19,9 @@ public class Client extends Thread {
     public Client(String username) {
         this.username = username;
     }
-
+    public String getUsername(){
+        return this.username;
+    }
     @Override
     public void run() {
         try {
@@ -28,26 +31,12 @@ public class Client extends Thread {
 
             Platform.runLater(() -> {
                 try {
+                    Server.getInstance().getAllClients().add(this);
                     FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("join-room.fxml"));
                     Scene scene = new Scene(fxmlLoader.load());
 
-                    if(Server.getInstance().getRoom("room1") != null){
-                        if(Server.getInstance().getRoom("room1").getClients().size() >= 2){
-                            System.out.println("Room is full");
-                        }
-                        else{
-                            Server.getInstance().getRoom("room1").getClients().add(this);
-                            System.out.println(this.username+" joined room1");
-                            System.out.println("Players: "+Server.getInstance().getRoom("room1").getClients().size());
-                        }
-                    }
-                    else{
-                        System.out.println("Creating new room");
-                        Server.getInstance().getRooms().put("room1", new Room("room1"));
-                        Server.getInstance().getRoom("room1").getClients().add(this);
-                        System.out.println(this.username+" joined room1");
-                        System.out.println("Players: "+Server.getInstance().getRoom("room1").getClients().size());
-                    }
+                    JoinRoom joinRoomController = fxmlLoader.getController();
+                    joinRoomController.setUsernameLabel(this.username);
 
                     Stage prepareFieldStage = new Stage();
                     prepareFieldStage.setTitle("Join Room - "+this.username);

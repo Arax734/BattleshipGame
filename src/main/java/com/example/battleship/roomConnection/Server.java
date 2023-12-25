@@ -6,7 +6,6 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-<<<<<<< HEAD
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -16,7 +15,7 @@ public class Server {
     private Map<String, Set<PrintWriter>> roomClients = new ConcurrentHashMap<>();
 
     private final Map<String, Room> rooms = new HashMap<>();
-    public ArrayList<String> usernames = new ArrayList<>();
+    private ArrayList<Client> allClients = new ArrayList<Client>();
 
     public static void main(String[] args) {
         Server.getInstance().start();
@@ -31,25 +30,6 @@ public class Server {
     public void start() {
         try (ServerSocket serverSocket = new ServerSocket(59090)) {
             System.out.println("Server is running...");
-=======
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-
-public class Server {
-    private Set<PrintWriter> clients = new HashSet<>();
-    private Map<String, Set<PrintWriter>> roomClients = new ConcurrentHashMap<>();
-
-    public static void main(String[] args) {
-        new Server().start();
-    }
-
-    public void start() {
-        try (ServerSocket serverSocket = new ServerSocket(59090)) {
-            System.out.println("Server is running...");
-
->>>>>>> 566737c10a6baa9b2553fdcb49ab4d80fc0378f0
             while (true) {
                 Socket socket = serverSocket.accept();
                 PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
@@ -62,7 +42,6 @@ public class Server {
         }
     }
 
-<<<<<<< HEAD
     public Room getRoom(String roomId) {
         return rooms.get(roomId);
     }
@@ -77,21 +56,30 @@ public class Server {
         return room;
     }
 
+    public ArrayList<Client> getAllClients() {
+        return allClients;
+    }
+
+    public void setAllClients(ArrayList<Client> allClients) {
+        this.allClients = allClients;
+    }
+
+    public Client getClient(String targetUsername){
+        for(Client client : this.getAllClients()){
+            if(client.getUsername().equals(targetUsername)){
+                return client;
+            }
+        }
+        return null;
+    }
+
     private class Handler implements Runnable {
-=======
-    private class Handler implements Runnable {
-        private Socket socket;
->>>>>>> 566737c10a6baa9b2553fdcb49ab4d80fc0378f0
         private BufferedReader in;
         private PrintWriter out;
         private String username;
         private String currentRoom;
 
         public Handler(Socket socket) {
-<<<<<<< HEAD
-=======
-            this.socket = socket;
->>>>>>> 566737c10a6baa9b2553fdcb49ab4d80fc0378f0
             try {
                 in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 out = new PrintWriter(socket.getOutputStream(), true);
