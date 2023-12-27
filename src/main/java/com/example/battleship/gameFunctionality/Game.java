@@ -2,6 +2,8 @@ package com.example.battleship.gameFunctionality;
 
 import com.example.battleship.roomConnection.Client;
 import com.example.battleship.roomConnection.Room;
+import com.example.battleship.roomConnection.Server;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -9,7 +11,18 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 public class Game {
+    @FXML
+    private Button goMenu;
+    @FXML
+    private Label timerLabel;
+    @FXML
+    private Label moveCount;
     @FXML
     private Pane myHolder;
     @FXML
@@ -21,15 +34,18 @@ public class Game {
     private Client client;
     private Room room;
     private int remainingFields;
+    private int moveCounter;
 
     public void loadData() {
         this.room = this.getClient().getRoom();
+        this.moveCounter = 0;
+        this.moveCount.setText(String.valueOf(this.getMoveCounter()));
         if(this.getRoom().getClientTurn().equals(this.getClient())){
             this.whoseTurn.setText("It's your turn");
         }else{
             this.whoseTurn.setText("It's your opponent's turn");
         }
-        this.remainingFields = 10;
+        this.remainingFields = 20;
         if(this.getClient().getOrder() == 1){
             this.setOpponentField(this.getRoom().getPlayer2());
             this.setMyField(this.getRoom().getPlayer1());
@@ -52,8 +68,13 @@ public class Game {
     }
 
     @FXML
-    protected void squareClicked(ActionEvent event){
+    protected void squareClicked(ActionEvent event) throws SQLException {
         if(this.getRoom().getClientTurn().equals(this.getClient())){
+            if(this.getRoom().timeline.getStatus() != Timeline.Status.RUNNING){
+                this.getRoom().startTimer();
+            }
+            this.setMoveCounter(this.getMoveCounter() + 1);
+            this.moveCount.setText(String.valueOf(this.getMoveCounter()));
             Client opponent;
             if(this.getRoom().getClients().get(0).equals(this.getClient())){
                 opponent = this.getRoom().getClients().get(1);
@@ -68,14 +89,48 @@ public class Game {
             String backgroundColorStyle;
             Pane pane = this.getOpponentHolder();
             if(this.getPlacement(x,y,pane)){
-                this.setRemainingFields(this.getRemainingFields() - 1);
+                opponent.getPlayerGUI().setRemainingFields(opponent.getPlayerGUI().getRemainingFields() - 1);
                 backgroundColorStyle = "-fx-background-color: orange";
                 this.getButton(x,y,pane).setStyle(backgroundColorStyle);
+                this.getButton(x,y,pane).setDisable(true);
 
                 backgroundColorStyle = "-fx-background-color: red";
                 opponent.getPlayerGUI().getButton(x,y,opponent.getPlayerGUI().getMyHolder()).setStyle(backgroundColorStyle);
+
+                if(opponent.getPlayerGUI().getRemainingFields() <= 0){
+                    this.getRoom().pauseTimer();
+                    this.whoseTurn.setText(this.getClient().getUsername()+" wins!");
+                    opponent.getPlayerGUI().whoseTurn.setText(this.getClient().getUsername()+" wins!");
+                    this.whoseTurn.setStyle("-fx-text-fill: 'lime'");
+                    opponent.getPlayerGUI().whoseTurn.setStyle("-fx-text-fill: 'lime'");
+                    for(Node button : this.getOpponentHolder().getChildren()){
+                        button.setDisable(true);
+                    }
+                    for(Node button : opponent.getPlayerGUI().getOpponentHolder().getChildren()){
+                        button.setDisable(true);
+                    }
+                    this.goMenu.setDisable(false);
+                    this.goMenu.setOpacity(1);
+
+                    String url = "jdbc:mysql://localhost/battleships";
+                    String user = "root";
+                    String password = "";
+
+                    Connection connection = DriverManager.getConnection(url, user, password);
+                    String addDataQuery = "INSERT INTO leaderboard (username, moves, time) VALUES (?, ?, ?)";
+                    try (PreparedStatement preparedStatement = connection.prepareStatement(addDataQuery)) {
+                        preparedStatement.setString(1, this.getClient().getUsername());
+                        preparedStatement.setInt(2, this.getMoveCounter());
+                        preparedStatement.setString(3, this.timerLabel.getText());
+                        preparedStatement.executeUpdate();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                    connection.close();
+                    return;
+                }
             }else{
-                backgroundColorStyle = "-fx-background-color: black";
+                backgroundColorStyle = "-fx-background-color: darkblue";
                 this.getButton(x,y,pane).setStyle(backgroundColorStyle);
                 this.getButton(x,y,pane).setDisable(true);
                 opponent.getPlayerGUI().getButton(x,y,opponent.getPlayerGUI().getMyHolder()).setStyle(backgroundColorStyle);
@@ -181,5 +236,30 @@ public class Game {
 
     public void setOpponentField(boolean[][] opponentField) {
         this.opponentField = opponentField;
+    }
+
+    public int getMoveCounter() {
+        return moveCounter;
+    }
+
+    public void setMoveCounter(int moveCounter) {
+        this.moveCounter = moveCounter;
+    }
+
+    public Label getTimerLabel() {
+        return timerLabel;
+    }
+
+    public void setTimerLabel(Label timerLabel) {
+        this.timerLabel = timerLabel;
+    }
+
+    @FXML
+    protected void leaveGame(){
+        for(Client client : this.getRoom().getClients()){
+            client.endGame();
+        }
+        this.getRoom().getClients().clear();
+        Server.getInstance().getRooms().remove(this.getRoom().getRoomId());
     }
 }

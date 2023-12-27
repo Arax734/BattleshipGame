@@ -31,7 +31,15 @@
     -fx-padding: 5px;
 }
 
-#confirmPlacementButton, #resetPlacementButton{
+#confirmPlacementButton, #resetPlacementButton, #goMenu{
     -fx-background-radius: 5em;
     -fx-border-width: 0;
+}
+
+.list-cell{
+    -fx-font-family: Poppins;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-color: rgb(59,59,59);
+    -fx-text-fill: white;
 }

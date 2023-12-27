@@ -79,11 +79,11 @@ public class PrepareField implements Initializable{
     }
     @FXML
     protected void confirmPlacement(){
-//        if(!Objects.equals(this.singleShipLabel.getText(), "0") || !Objects.equals(this.doubleShipLabel.getText(), "0")
-//        || !Objects.equals(this.tripleShipLabel.getText(), "0") || !Objects.equals(this.quadrupleShipLabel.getText(), "0")){
-//            showError("Put every battleship on the board!");
-//            return;
-//        }
+        if(!Objects.equals(this.singleShipLabel.getText(), "0") || !Objects.equals(this.doubleShipLabel.getText(), "0")
+        || !Objects.equals(this.tripleShipLabel.getText(), "0") || !Objects.equals(this.quadrupleShipLabel.getText(), "0")){
+            showError("Put every battleship on the board!");
+            return;
+        }
         this.waitingMessage.setOpacity(1);
         this.waitingMessage.setDisable(false);
         this.confirmPlacementButton.setOpacity(0);

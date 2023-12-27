@@ -1,13 +1,24 @@
 package com.example.battleship.roomConnection;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.control.Label;
+
 import java.util.List;
 import java.util.ArrayList;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.util.Duration;
 public class Room {
     private Client clientTurn;
     private final String roomId;
     private final List<Client> clients;
     private boolean[][] player1;
     private boolean[][] player2;
+
+    public int elapsedTimeSeconds = 0;
+    public int elapsedTimeMinutes = 0;
+    public Timeline timeline;
 
     public Room(String roomId) {
         this.roomId = roomId;
@@ -23,6 +34,46 @@ public class Room {
             for(int j=0; j<10; j++){
                 this.player2[i][j] = false;
             }
+        }
+        Label timerLabel = new Label("00:00");
+
+        EventHandler<ActionEvent> eventHandler = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                updateTime();
+            }
+        };
+
+        this.timeline = new Timeline(
+                new KeyFrame(Duration.seconds(1), eventHandler)
+        );
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
+    }
+
+    private void updateTime() {
+        elapsedTimeSeconds++;
+        if (elapsedTimeSeconds == 60) {
+            elapsedTimeSeconds = 0;
+            elapsedTimeMinutes++;
+        }
+        String time = String.format("%02d:%02d", elapsedTimeMinutes, elapsedTimeSeconds);
+        for(Client client : this.getClients()){
+            if(client.getPlayerGUI() != null){
+                client.getPlayerGUI().getTimerLabel().setText(time);
+            }
+        }
+    }
+
+    public void startTimer() {
+        if (this.timeline != null) {
+            this.timeline.play();
+        }
+    }
+
+    public void pauseTimer() {
+        if (this.timeline != null) {
+            this.timeline.pause();
         }
     }
 

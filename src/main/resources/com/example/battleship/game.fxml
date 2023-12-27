@@ -5,11 +5,12 @@
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="mainWindow" prefHeight="539.0" prefWidth="990.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.battleship.gameFunctionality.Game">
+<AnchorPane id="mainWindow" prefHeight="584.0" prefWidth="990.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.battleship.gameFunctionality.Game">
    <children>
-      <Pane id="buttonsHolder" layoutX="35.0" layoutY="66.0" prefHeight="440.0" prefWidth="440.0">
+      <Pane id="buttonsHolder" layoutX="35.0" layoutY="107.0" prefHeight="440.0" prefWidth="440.0">
          <children>
             <Label alignment="CENTER" layoutX="40.0" prefHeight="40.0" prefWidth="40.0" text="A" textFill="WHITE">
                <font>
@@ -277,7 +278,7 @@
             </Pane>
          </children>
       </Pane>
-      <Pane id="buttonsHolder" layoutX="515.0" layoutY="66.0" prefHeight="440.0" prefWidth="440.0">
+      <Pane id="buttonsHolder" layoutX="515.0" layoutY="107.0" prefHeight="440.0" prefWidth="440.0">
          <children>
             <Label alignment="CENTER" layoutX="40.0" prefHeight="40.0" prefWidth="40.0" text="A" textFill="WHITE">
                <font>
@@ -545,7 +546,7 @@
             </Pane>
          </children>
       </Pane>
-      <Label layoutX="707.0" layoutY="28.0" text="My field" textFill="#39ebff">
+      <Label layoutX="707.0" layoutY="69.0" text="My field" textFill="#39ebff">
          <font>
             <Font name="Poppins Bold" size="14.0" />
          </font>
@@ -553,7 +554,7 @@
             <DropShadow />
          </effect>
       </Label>
-      <Label layoutX="201.0" layoutY="28.0" text="Opponent field" textFill="RED">
+      <Label layoutX="201.0" layoutY="69.0" text="Opponent field" textFill="RED">
          <font>
             <Font name="Poppins Bold" size="14.0" />
          </font>
@@ -561,7 +562,7 @@
             <DropShadow />
          </effect>
       </Label>
-      <Label fx:id="whoseTurn" alignment="CENTER" layoutX="346.0" layoutY="29.0" prefHeight="18.0" prefWidth="298.0" textFill="WHITE">
+      <Label fx:id="whoseTurn" alignment="CENTER" layoutX="346.0" layoutY="70.0" prefHeight="18.0" prefWidth="298.0" textFill="WHITE">
          <font>
             <Font name="Poppins Bold" size="14.0" />
          </font>
@@ -569,5 +570,51 @@
             <DropShadow />
          </effect>
       </Label>
+      <Label layoutX="35.0" layoutY="28.0" text="Moves:" textFill="WHITE">
+         <font>
+            <Font name="Poppins Bold" size="14.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Label>
+      <Label fx:id="moveCount" layoutX="93.0" layoutY="28.0" textFill="WHITE">
+         <font>
+            <Font name="Poppins Bold" size="14.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Label>
+      <Label fx:id="timerLabel" alignment="CENTER" layoutX="435.0" layoutY="28.0" prefHeight="20.0" prefWidth="119.0" text="00:00" textFill="WHITE">
+         <font>
+            <Font name="Poppins Bold" size="14.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Label>
+      <Button fx:id="goMenu" disable="true" layoutX="883.0" layoutY="23.0" mnemonicParsing="false" onAction="#leaveGame" opacity="0.0" prefHeight="30.0" prefWidth="72.0" textFill="RED">
+         <font>
+            <Font name="Poppins Bold" size="14.0" />
+         </font>
+         <effect>
+            <DropShadow height="39.72" radius="19.36" spread="0.25" width="39.72">
+               <color>
+                  <Color red="1.0" />
+               </color>
+            </DropShadow>
+         </effect>
+         <graphic>
+            <Label text="EXIT" textFill="RED">
+               <font>
+                  <Font name="Poppins Bold" size="14.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Label>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

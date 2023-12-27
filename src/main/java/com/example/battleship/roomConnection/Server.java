@@ -6,10 +6,14 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.sql.*;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class Server {
+
+    private static final int PORT = 2137;
+    private static final int MAX_STUDENTS = 250;
     private static Server instance;
     private Set<PrintWriter> clients = new HashSet<>();
     private Map<String, Set<PrintWriter>> roomClients = new ConcurrentHashMap<>();
@@ -26,9 +30,11 @@ public class Server {
         }
         return instance;
     }
+
     public void start() {
         try (ServerSocket serverSocket = new ServerSocket(59090)) {
             System.out.println("Server is running...");
+            createDatabase();
             while (true) {
                 Socket socket = serverSocket.accept();
                 PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
@@ -45,7 +51,7 @@ public class Server {
         return rooms.get(roomId);
     }
 
-    public Map<String, Room> getRooms(){
+    public Map<String, Room> getRooms() {
         return this.rooms;
     }
 
@@ -63,9 +69,9 @@ public class Server {
         this.allClients = allClients;
     }
 
-    public Client getClient(String targetUsername){
-        for(Client client : this.getAllClients()){
-            if(client.getUsername().equals(targetUsername)){
+    public Client getClient(String targetUsername) {
+        for (Client client : this.getAllClients()) {
+            if (client.getUsername().equals(targetUsername)) {
                 return client;
             }
         }
@@ -90,6 +96,7 @@ public class Server {
         @Override
         public void run() {
             try {
+
                 while (true) {
                     String input = in.readLine();
                     if (input == null) {
@@ -154,6 +161,76 @@ public class Server {
     private void broadcast(String message) {
         for (PrintWriter client : clients) {
             client.println(message);
+        }
+    }
+
+    public void createDatabase() throws IOException {
+        try (ServerSocket serverSocket = new ServerSocket(PORT)) {
+            String url = "jdbc:mysql://localhost";
+            String user = "root";
+            String password = "";
+
+            Connection connection = null;
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            connection = DriverManager.getConnection(url, user, password);
+
+            if (!databaseExists(connection)) {
+                try {
+                    createDatabase(connection);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            connection.close();
+            connection = DriverManager.getConnection(url+"/battleships", user, password);
+
+            if (!tableExists(connection)){
+                createLeaderboard(connection);
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        }
+    }
+    private static boolean databaseExists(Connection connection) throws SQLException {
+        String query = "SHOW DATABASES LIKE ?";
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, "battleships");
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                return resultSet.next();
+            }
+        }
+    }
+    private static void createDatabase(Connection connection) throws SQLException {
+        String createDatabaseQuery = "CREATE DATABASE " + "battleships";
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(createDatabaseQuery)) {
+            preparedStatement.executeUpdate();
+        }
+    }
+    private static boolean tableExists(Connection connection) throws SQLException {
+        String query = "SHOW TABLES LIKE ?";
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, "leaderboard");
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                return ((ResultSet) resultSet).next();
+            }
+        }
+    }
+    private static void createLeaderboard(Connection connection) throws SQLException {
+        String createTableQuery = "CREATE TABLE "+ "leaderboard" +" ("
+                + "id INT PRIMARY KEY AUTO_INCREMENT,"
+                + "username VARCHAR(255),"
+                + "moves int(3),"
+                + "time varchar(5)"
+                + ")";
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(createTableQuery)) {
+            preparedStatement.executeUpdate();
         }
     }
 }

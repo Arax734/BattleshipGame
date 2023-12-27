@@ -59,7 +59,7 @@ public class Client extends Thread {
                 }
             });
 
-            while (true) {
+            while (!isInterrupted()) {
                 String message = in.readLine();
                 if (message != null) {
                     System.out.println(message);
@@ -104,6 +104,23 @@ public class Client extends Thread {
                 this.recentStage.setTitle(this.getRoom().getRoomId()+": Game - "+this.getUsername()+" vs "+this.getRoom().getClients().get(0).getUsername());
             }
 
+            this.recentStage.setScene(newScene);
+            this.getRoom().elapsedTimeMinutes = 0;
+            this.getRoom().elapsedTimeSeconds = 0;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void endGame(){
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("join-room.fxml"));
+        try {
+            Scene newScene = new Scene(fxmlLoader.load());
+
+            JoinRoom joinRoomController = fxmlLoader.getController();
+            joinRoomController.setUsernameLabel(this.username);
+            this.recentStage.setTitle("Join Room - "+this.username);
             this.recentStage.setScene(newScene);
 
         } catch (IOException e) {
