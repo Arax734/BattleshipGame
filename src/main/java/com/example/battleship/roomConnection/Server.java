@@ -13,7 +13,6 @@ public class Server {
     private static Server instance;
     private Set<PrintWriter> clients = new HashSet<>();
     private Map<String, Set<PrintWriter>> roomClients = new ConcurrentHashMap<>();
-
     private final Map<String, Room> rooms = new HashMap<>();
     private ArrayList<Client> allClients = new ArrayList<Client>();
 

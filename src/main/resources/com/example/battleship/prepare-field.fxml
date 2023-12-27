@@ -405,7 +405,7 @@
             </VBox>
          </children>
       </Pane>
-      <Button fx:id="confirmPlacementButton" layoutX="365.0" layoutY="511.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="166.0" textFill="#00b7ff">
+      <Button fx:id="confirmPlacementButton" layoutX="365.0" layoutY="511.0" mnemonicParsing="false" onAction="#confirmPlacement" prefHeight="30.0" prefWidth="166.0" textFill="#00b7ff">
          <font>
             <Font name="Poppins Bold" size="14.0" />
          </font>
@@ -436,6 +436,14 @@
          <font>
             <Font name="Poppins Bold" size="14.0" />
          </font>
+      </Label>
+      <Label fx:id="waitingMessage" disable="true" layoutX="317.0" layoutY="499.0" opacity="0.0" prefHeight="54.0" prefWidth="262.0" text="Waiting for other player to confirm..." textFill="WHITE">
+         <font>
+            <Font name="Poppins Bold" size="14.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
       </Label>
     </children>
 </AnchorPane>

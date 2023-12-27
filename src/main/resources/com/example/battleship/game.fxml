@@ -2,215 +2,572 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="mainWindow" prefHeight="519.0" prefWidth="698.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.battleship.gameFunctionality.Game">
+<AnchorPane id="mainWindow" prefHeight="539.0" prefWidth="990.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.battleship.gameFunctionality.Game">
    <children>
-      <Pane id="buttonsHolder" layoutX="129.0" layoutY="40.0" prefHeight="440.0" prefWidth="440.0">
+      <Pane id="buttonsHolder" layoutX="35.0" layoutY="66.0" prefHeight="440.0" prefWidth="440.0">
          <children>
-            <Button fx:id="square00" layoutX="40.0" layoutY="40.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
             <Label alignment="CENTER" layoutX="40.0" prefHeight="40.0" prefWidth="40.0" text="A" textFill="WHITE">
                <font>
-                  <Font name="Poppins Regular" size="20.0" />
+                  <Font name="Poppins Bold" size="20.0" />
                </font>
+               <effect>
+                  <DropShadow />
+               </effect>
             </Label>
             <Label alignment="CENTER" layoutX="80.0" prefHeight="40.0" prefWidth="40.0" text="B" textFill="WHITE">
                <font>
-                  <Font name="Poppins Regular" size="20.0" />
+                  <Font name="Poppins Bold" size="20.0" />
                </font>
+               <effect>
+                  <DropShadow />
+               </effect>
             </Label>
             <Label alignment="CENTER" layoutX="120.0" prefHeight="40.0" prefWidth="40.0" text="C" textFill="WHITE">
                <font>
-                  <Font name="Poppins Regular" size="20.0" />
+                  <Font name="Poppins Bold" size="20.0" />
                </font>
+               <effect>
+                  <DropShadow />
+               </effect>
             </Label>
             <Label alignment="CENTER" layoutX="160.0" prefHeight="40.0" prefWidth="40.0" text="D" textFill="WHITE">
                <font>
-                  <Font name="Poppins Regular" size="20.0" />
+                  <Font name="Poppins Bold" size="20.0" />
                </font>
+               <effect>
+                  <DropShadow />
+               </effect>
             </Label>
             <Label alignment="CENTER" layoutX="200.0" prefHeight="40.0" prefWidth="40.0" text="E" textFill="WHITE">
                <font>
-                  <Font name="Poppins Regular" size="20.0" />
+                  <Font name="Poppins Bold" size="20.0" />
                </font>
+               <effect>
+                  <DropShadow />
+               </effect>
             </Label>
             <Label alignment="CENTER" layoutX="240.0" prefHeight="40.0" prefWidth="40.0" text="F" textFill="WHITE">
                <font>
-                  <Font name="Poppins Regular" size="20.0" />
+                  <Font name="Poppins Bold" size="20.0" />
                </font>
+               <effect>
+                  <DropShadow />
+               </effect>
             </Label>
             <Label alignment="CENTER" layoutX="280.0" prefHeight="40.0" prefWidth="40.0" text="G" textFill="WHITE">
                <font>
-                  <Font name="Poppins Regular" size="20.0" />
+                  <Font name="Poppins Bold" size="20.0" />
                </font>
+               <effect>
+                  <DropShadow />
+               </effect>
             </Label>
             <Label alignment="CENTER" layoutX="320.0" prefHeight="40.0" prefWidth="40.0" text="H" textFill="WHITE">
                <font>
-                  <Font name="Poppins Regular" size="20.0" />
+                  <Font name="Poppins Bold" size="20.0" />
                </font>
+               <effect>
+                  <DropShadow />
+               </effect>
             </Label>
             <Label alignment="CENTER" layoutX="360.0" prefHeight="40.0" prefWidth="40.0" text="I" textFill="WHITE">
                <font>
-                  <Font name="Poppins Regular" size="20.0" />
+                  <Font name="Poppins Bold" size="20.0" />
                </font>
+               <effect>
+                  <DropShadow />
+               </effect>
             </Label>
             <Label alignment="CENTER" layoutX="400.0" prefHeight="40.0" prefWidth="40.0" text="J" textFill="WHITE">
                <font>
-                  <Font name="Poppins Regular" size="20.0" />
+                  <Font name="Poppins Bold" size="20.0" />
                </font>
+               <effect>
+                  <DropShadow />
+               </effect>
             </Label>
             <Label alignment="CENTER" layoutY="40.0" prefHeight="40.0" prefWidth="40.0" text="1" textFill="WHITE">
                <font>
-                  <Font name="Poppins Regular" size="20.0" />
+                  <Font name="Poppins Bold" size="20.0" />
                </font>
+               <effect>
+                  <DropShadow />
+               </effect>
             </Label>
             <Label alignment="CENTER" layoutY="80.0" prefHeight="40.0" prefWidth="40.0" text="2" textFill="WHITE">
                <font>
-                  <Font name="Poppins Regular" size="20.0" />
+                  <Font name="Poppins Bold" size="20.0" />
                </font>
+               <effect>
+                  <DropShadow />
+               </effect>
             </Label>
             <Label alignment="CENTER" layoutY="120.0" prefHeight="40.0" prefWidth="40.0" text="3" textFill="WHITE">
                <font>
-                  <Font name="Poppins Regular" size="20.0" />
+                  <Font name="Poppins Bold" size="20.0" />
                </font>
+               <effect>
+                  <DropShadow />
+               </effect>
             </Label>
             <Label alignment="CENTER" layoutY="160.0" prefHeight="40.0" prefWidth="40.0" text="4" textFill="WHITE">
                <font>
-                  <Font name="Poppins Regular" size="20.0" />
+                  <Font name="Poppins Bold" size="20.0" />
                </font>
+               <effect>
+                  <DropShadow />
+               </effect>
             </Label>
             <Label alignment="CENTER" layoutY="200.0" prefHeight="40.0" prefWidth="40.0" text="5" textFill="WHITE">
                <font>
-                  <Font name="Poppins Regular" size="20.0" />
+                  <Font name="Poppins Bold" size="20.0" />
                </font>
+               <effect>
+                  <DropShadow />
+               </effect>
             </Label>
             <Label alignment="CENTER" layoutY="240.0" prefHeight="40.0" prefWidth="40.0" text="6" textFill="WHITE">
                <font>
-                  <Font name="Poppins Regular" size="20.0" />
+                  <Font name="Poppins Bold" size="20.0" />
                </font>
+               <effect>
+                  <DropShadow />
+               </effect>
             </Label>
             <Label alignment="CENTER" layoutY="280.0" prefHeight="40.0" prefWidth="40.0" text="7" textFill="WHITE">
                <font>
-                  <Font name="Poppins Regular" size="20.0" />
+                  <Font name="Poppins Bold" size="20.0" />
                </font>
+               <effect>
+                  <DropShadow />
+               </effect>
             </Label>
             <Label alignment="CENTER" layoutY="320.0" prefHeight="40.0" prefWidth="40.0" text="8" textFill="WHITE">
                <font>
-                  <Font name="Poppins Regular" size="20.0" />
+                  <Font name="Poppins Bold" size="20.0" />
                </font>
+               <effect>
+                  <DropShadow />
+               </effect>
             </Label>
             <Label alignment="CENTER" layoutY="360.0" prefHeight="40.0" prefWidth="40.0" text="9" textFill="WHITE">
                <font>
-                  <Font name="Poppins Regular" size="20.0" />
+                  <Font name="Poppins Bold" size="20.0" />
                </font>
+               <effect>
+                  <DropShadow />
+               </effect>
             </Label>
             <Label alignment="CENTER" layoutY="400.0" prefHeight="40.0" prefWidth="40.0" text="10" textFill="WHITE">
                <font>
-                  <Font name="Poppins Regular" size="20.0" />
+                  <Font name="Poppins Bold" size="20.0" />
                </font>
+               <effect>
+                  <DropShadow />
+               </effect>
             </Label>
-            <Button fx:id="square001" layoutX="40.0" layoutY="80.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square002" layoutX="40.0" layoutY="120.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square003" layoutX="40.0" layoutY="160.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square004" layoutX="40.0" layoutY="200.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square005" layoutX="40.0" layoutY="240.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square006" layoutX="40.0" layoutY="280.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square007" layoutX="40.0" layoutY="320.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square008" layoutX="40.0" layoutY="360.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square009" layoutX="40.0" layoutY="400.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square0010" layoutX="80.0" layoutY="40.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square0011" layoutX="80.0" layoutY="80.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square0021" layoutX="80.0" layoutY="120.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square0031" layoutX="80.0" layoutY="160.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square0041" layoutX="80.0" layoutY="200.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square0051" layoutX="80.0" layoutY="240.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square0061" layoutX="80.0" layoutY="280.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square0071" layoutX="80.0" layoutY="320.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square0081" layoutX="80.0" layoutY="360.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square0091" layoutX="80.0" layoutY="400.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square0012" layoutX="120.0" layoutY="40.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square0012" layoutX="120.0" layoutY="80.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square0022" layoutX="120.0" layoutY="120.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square0032" layoutX="120.0" layoutY="160.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square0042" layoutX="120.0" layoutY="200.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square0052" layoutX="120.0" layoutY="240.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square0062" layoutX="120.0" layoutY="280.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square0072" layoutX="120.0" layoutY="320.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square0082" layoutX="120.0" layoutY="360.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square0092" layoutX="120.0" layoutY="400.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square00101" layoutX="160.0" layoutY="40.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square00111" layoutX="160.0" layoutY="80.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square00211" layoutX="160.0" layoutY="120.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square00311" layoutX="160.0" layoutY="160.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square00411" layoutX="160.0" layoutY="200.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square00511" layoutX="160.0" layoutY="240.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square00611" layoutX="160.0" layoutY="280.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square00711" layoutX="160.0" layoutY="320.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square00811" layoutX="160.0" layoutY="360.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square00911" layoutX="160.0" layoutY="400.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square0013" layoutX="200.0" layoutY="40.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square0013" layoutX="200.0" layoutY="80.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square0023" layoutX="200.0" layoutY="120.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square0033" layoutX="200.0" layoutY="160.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square0043" layoutX="200.0" layoutY="200.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square0053" layoutX="200.0" layoutY="240.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square0063" layoutX="200.0" layoutY="280.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square0073" layoutX="200.0" layoutY="320.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square0083" layoutX="200.0" layoutY="360.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square0093" layoutX="200.0" layoutY="400.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square00102" layoutX="240.0" layoutY="40.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square00112" layoutX="240.0" layoutY="80.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square00212" layoutX="240.0" layoutY="120.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square00312" layoutX="240.0" layoutY="160.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square00412" layoutX="240.0" layoutY="200.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square00512" layoutX="240.0" layoutY="240.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square00612" layoutX="240.0" layoutY="280.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square00712" layoutX="240.0" layoutY="320.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square00812" layoutX="240.0" layoutY="360.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square00912" layoutX="240.0" layoutY="400.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square00121" layoutX="280.0" layoutY="40.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square00121" layoutX="280.0" layoutY="80.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square00221" layoutX="280.0" layoutY="120.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square00321" layoutX="280.0" layoutY="160.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square00421" layoutX="280.0" layoutY="200.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square00521" layoutX="280.0" layoutY="240.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square00621" layoutX="280.0" layoutY="280.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square00721" layoutX="280.0" layoutY="320.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square00821" layoutX="280.0" layoutY="360.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square00921" layoutX="280.0" layoutY="400.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square001011" layoutX="320.0" layoutY="40.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square001111" layoutX="320.0" layoutY="80.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square002111" layoutX="320.0" layoutY="120.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square003111" layoutX="320.0" layoutY="160.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square004111" layoutX="320.0" layoutY="200.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square005111" layoutX="320.0" layoutY="240.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square006111" layoutX="320.0" layoutY="280.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square007111" layoutX="320.0" layoutY="320.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square008111" layoutX="320.0" layoutY="360.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square009111" layoutX="320.0" layoutY="400.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square001211" layoutX="360.0" layoutY="40.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square001211" layoutX="360.0" layoutY="80.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square002211" layoutX="360.0" layoutY="120.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square003211" layoutX="360.0" layoutY="160.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square004211" layoutX="360.0" layoutY="200.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square005211" layoutX="360.0" layoutY="240.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square006211" layoutX="360.0" layoutY="280.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square007211" layoutX="360.0" layoutY="320.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square008211" layoutX="360.0" layoutY="360.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square009211" layoutX="360.0" layoutY="400.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square0010111" layoutX="400.0" layoutY="40.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square0011111" layoutX="400.0" layoutY="80.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square0021111" layoutX="400.0" layoutY="120.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square0031111" layoutX="400.0" layoutY="160.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square0041111" layoutX="400.0" layoutY="200.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square0051111" layoutX="400.0" layoutY="240.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square0061111" layoutX="400.0" layoutY="280.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square0071111" layoutX="400.0" layoutY="320.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square0081111" layoutX="400.0" layoutY="360.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
-            <Button fx:id="square0091111" layoutX="400.0" layoutY="400.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+            <Pane fx:id="opponentHolder" layoutX="40.0" layoutY="39.0" prefHeight="402.0" prefWidth="400.0">
+               <children>
+                  <Button fx:id="square00" layoutY="2.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square10" layoutY="42.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square20" layoutY="82.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square30" layoutY="122.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square40" layoutY="162.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square50" layoutY="202.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square60" layoutY="242.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square70" layoutY="282.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square80" layoutY="322.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square90" layoutY="362.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square01" layoutX="40.0" layoutY="2.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square11" layoutX="40.0" layoutY="42.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square21" layoutX="40.0" layoutY="82.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square31" layoutX="40.0" layoutY="122.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square41" layoutX="40.0" layoutY="162.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square51" layoutX="40.0" layoutY="202.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square61" layoutX="40.0" layoutY="242.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square71" layoutX="40.0" layoutY="282.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square81" layoutX="40.0" layoutY="322.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square91" layoutX="40.0" layoutY="362.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square02" layoutX="80.0" layoutY="2.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square12" layoutX="80.0" layoutY="42.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square22" layoutX="80.0" layoutY="82.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square32" layoutX="80.0" layoutY="122.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square42" layoutX="80.0" layoutY="162.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square52" layoutX="80.0" layoutY="202.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square62" layoutX="80.0" layoutY="242.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square72" layoutX="80.0" layoutY="282.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square82" layoutX="80.0" layoutY="322.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square92" layoutX="80.0" layoutY="362.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square03" layoutX="120.0" layoutY="2.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square13" layoutX="120.0" layoutY="42.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square23" layoutX="120.0" layoutY="82.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square33" layoutX="120.0" layoutY="122.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square43" layoutX="120.0" layoutY="162.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square53" layoutX="120.0" layoutY="202.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square63" layoutX="120.0" layoutY="242.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square73" layoutX="120.0" layoutY="282.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square83" layoutX="120.0" layoutY="322.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square93" layoutX="120.0" layoutY="362.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square04" layoutX="160.0" layoutY="2.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square14" layoutX="160.0" layoutY="42.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square24" layoutX="160.0" layoutY="82.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square34" layoutX="160.0" layoutY="122.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square44" layoutX="160.0" layoutY="162.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square54" layoutX="160.0" layoutY="202.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square64" layoutX="160.0" layoutY="242.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square74" layoutX="160.0" layoutY="282.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square84" layoutX="160.0" layoutY="322.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square94" layoutX="160.0" layoutY="362.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square05" layoutX="200.0" layoutY="2.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square15" layoutX="200.0" layoutY="42.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square25" layoutX="200.0" layoutY="82.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square35" layoutX="200.0" layoutY="122.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square45" layoutX="200.0" layoutY="162.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square55" layoutX="200.0" layoutY="202.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square65" layoutX="200.0" layoutY="242.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square75" layoutX="200.0" layoutY="282.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square85" layoutX="200.0" layoutY="322.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square95" layoutX="200.0" layoutY="362.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square06" layoutX="240.0" layoutY="2.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square16" layoutX="240.0" layoutY="42.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square26" layoutX="240.0" layoutY="82.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square36" layoutX="240.0" layoutY="122.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square46" layoutX="240.0" layoutY="162.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square56" layoutX="240.0" layoutY="202.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square66" layoutX="240.0" layoutY="242.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square76" layoutX="240.0" layoutY="282.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square86" layoutX="240.0" layoutY="322.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square96" layoutX="240.0" layoutY="362.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square07" layoutX="280.0" layoutY="2.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square17" layoutX="280.0" layoutY="42.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square27" layoutX="280.0" layoutY="82.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square37" layoutX="280.0" layoutY="122.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square47" layoutX="280.0" layoutY="162.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square57" layoutX="280.0" layoutY="202.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square67" layoutX="280.0" layoutY="242.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square77" layoutX="280.0" layoutY="282.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square87" layoutX="280.0" layoutY="322.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square97" layoutX="280.0" layoutY="362.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square08" layoutX="320.0" layoutY="2.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square18" layoutX="320.0" layoutY="42.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square28" layoutX="320.0" layoutY="82.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square38" layoutX="320.0" layoutY="122.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square48" layoutX="320.0" layoutY="162.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square58" layoutX="320.0" layoutY="202.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square68" layoutX="320.0" layoutY="242.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square78" layoutX="320.0" layoutY="282.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square88" layoutX="320.0" layoutY="322.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square98" layoutX="320.0" layoutY="362.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square09" layoutX="360.0" layoutY="2.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square19" layoutX="360.0" layoutY="42.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square29" layoutX="360.0" layoutY="82.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square39" layoutX="360.0" layoutY="122.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square49" layoutX="360.0" layoutY="162.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square59" layoutX="360.0" layoutY="202.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square69" layoutX="360.0" layoutY="242.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square79" layoutX="360.0" layoutY="282.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square89" layoutX="360.0" layoutY="322.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="square99" layoutX="360.0" layoutY="362.0" mnemonicParsing="false" onAction="#squareClicked" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+               </children>
+            </Pane>
          </children>
       </Pane>
+      <Pane id="buttonsHolder" layoutX="515.0" layoutY="66.0" prefHeight="440.0" prefWidth="440.0">
+         <children>
+            <Label alignment="CENTER" layoutX="40.0" prefHeight="40.0" prefWidth="40.0" text="A" textFill="WHITE">
+               <font>
+                  <Font name="Poppins Bold" size="20.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Label>
+            <Label alignment="CENTER" layoutX="80.0" prefHeight="40.0" prefWidth="40.0" text="B" textFill="WHITE">
+               <font>
+                  <Font name="Poppins Bold" size="20.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Label>
+            <Label alignment="CENTER" layoutX="120.0" prefHeight="40.0" prefWidth="40.0" text="C" textFill="WHITE">
+               <font>
+                  <Font name="Poppins Bold" size="20.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Label>
+            <Label alignment="CENTER" layoutX="160.0" prefHeight="40.0" prefWidth="40.0" text="D" textFill="WHITE">
+               <font>
+                  <Font name="Poppins Bold" size="20.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Label>
+            <Label alignment="CENTER" layoutX="200.0" prefHeight="40.0" prefWidth="40.0" text="E" textFill="WHITE">
+               <font>
+                  <Font name="Poppins Bold" size="20.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Label>
+            <Label alignment="CENTER" layoutX="240.0" prefHeight="40.0" prefWidth="40.0" text="F" textFill="WHITE">
+               <font>
+                  <Font name="Poppins Bold" size="20.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Label>
+            <Label alignment="CENTER" layoutX="280.0" prefHeight="40.0" prefWidth="40.0" text="G" textFill="WHITE">
+               <font>
+                  <Font name="Poppins Bold" size="20.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Label>
+            <Label alignment="CENTER" layoutX="320.0" prefHeight="40.0" prefWidth="40.0" text="H" textFill="WHITE">
+               <font>
+                  <Font name="Poppins Bold" size="20.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Label>
+            <Label alignment="CENTER" layoutX="360.0" prefHeight="40.0" prefWidth="40.0" text="I" textFill="WHITE">
+               <font>
+                  <Font name="Poppins Bold" size="20.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Label>
+            <Label alignment="CENTER" layoutX="400.0" prefHeight="40.0" prefWidth="40.0" text="J" textFill="WHITE">
+               <font>
+                  <Font name="Poppins Bold" size="20.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Label>
+            <Label alignment="CENTER" layoutY="40.0" prefHeight="40.0" prefWidth="40.0" text="1" textFill="WHITE">
+               <font>
+                  <Font name="Poppins Bold" size="20.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Label>
+            <Label alignment="CENTER" layoutY="80.0" prefHeight="40.0" prefWidth="40.0" text="2" textFill="WHITE">
+               <font>
+                  <Font name="Poppins Bold" size="20.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Label>
+            <Label alignment="CENTER" layoutY="120.0" prefHeight="40.0" prefWidth="40.0" text="3" textFill="WHITE">
+               <font>
+                  <Font name="Poppins Bold" size="20.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Label>
+            <Label alignment="CENTER" layoutY="160.0" prefHeight="40.0" prefWidth="40.0" text="4" textFill="WHITE">
+               <font>
+                  <Font name="Poppins Bold" size="20.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Label>
+            <Label alignment="CENTER" layoutY="200.0" prefHeight="40.0" prefWidth="40.0" text="5" textFill="WHITE">
+               <font>
+                  <Font name="Poppins Bold" size="20.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Label>
+            <Label alignment="CENTER" layoutY="240.0" prefHeight="40.0" prefWidth="40.0" text="6" textFill="WHITE">
+               <font>
+                  <Font name="Poppins Bold" size="20.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Label>
+            <Label alignment="CENTER" layoutY="280.0" prefHeight="40.0" prefWidth="40.0" text="7" textFill="WHITE">
+               <font>
+                  <Font name="Poppins Bold" size="20.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Label>
+            <Label alignment="CENTER" layoutY="320.0" prefHeight="40.0" prefWidth="40.0" text="8" textFill="WHITE">
+               <font>
+                  <Font name="Poppins Bold" size="20.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Label>
+            <Label alignment="CENTER" layoutY="360.0" prefHeight="40.0" prefWidth="40.0" text="9" textFill="WHITE">
+               <font>
+                  <Font name="Poppins Bold" size="20.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Label>
+            <Label alignment="CENTER" layoutY="400.0" prefHeight="40.0" prefWidth="40.0" text="10" textFill="WHITE">
+               <font>
+                  <Font name="Poppins Bold" size="20.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Label>
+            <Pane fx:id="myHolder" layoutX="40.0" layoutY="39.0" prefHeight="402.0" prefWidth="400.0">
+               <children>
+                  <Button fx:id="my00" layoutY="2.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my10" layoutY="42.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my20" layoutY="82.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my30" layoutY="122.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my40" layoutY="162.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my50" layoutY="202.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my60" layoutY="242.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my70" layoutY="282.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my80" layoutY="322.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my90" layoutY="362.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my01" layoutX="40.0" layoutY="2.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my11" layoutX="40.0" layoutY="42.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my21" layoutX="40.0" layoutY="82.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my31" layoutX="40.0" layoutY="122.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my41" layoutX="40.0" layoutY="162.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my51" layoutX="40.0" layoutY="202.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my61" layoutX="40.0" layoutY="242.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my71" layoutX="40.0" layoutY="282.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my81" layoutX="40.0" layoutY="322.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my91" layoutX="40.0" layoutY="362.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my02" layoutX="80.0" layoutY="2.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my12" layoutX="80.0" layoutY="42.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my22" layoutX="80.0" layoutY="82.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my32" layoutX="80.0" layoutY="122.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my42" layoutX="80.0" layoutY="162.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my52" layoutX="80.0" layoutY="202.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my62" layoutX="80.0" layoutY="242.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my72" layoutX="80.0" layoutY="282.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my82" layoutX="80.0" layoutY="322.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my92" layoutX="80.0" layoutY="362.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my03" layoutX="120.0" layoutY="2.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my13" layoutX="120.0" layoutY="42.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my23" layoutX="120.0" layoutY="82.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my33" layoutX="120.0" layoutY="122.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my43" layoutX="120.0" layoutY="162.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my53" layoutX="120.0" layoutY="202.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my63" layoutX="120.0" layoutY="242.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my73" layoutX="120.0" layoutY="282.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my83" layoutX="120.0" layoutY="322.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my93" layoutX="120.0" layoutY="362.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my04" layoutX="160.0" layoutY="2.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my14" layoutX="160.0" layoutY="42.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my24" layoutX="160.0" layoutY="82.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my34" layoutX="160.0" layoutY="122.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my44" layoutX="160.0" layoutY="162.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my54" layoutX="160.0" layoutY="202.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my64" layoutX="160.0" layoutY="242.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my74" layoutX="160.0" layoutY="282.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my84" layoutX="160.0" layoutY="322.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my94" layoutX="160.0" layoutY="362.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my05" layoutX="200.0" layoutY="2.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my15" layoutX="200.0" layoutY="42.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my25" layoutX="200.0" layoutY="82.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my35" layoutX="200.0" layoutY="122.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my45" layoutX="200.0" layoutY="162.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my55" layoutX="200.0" layoutY="202.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my65" layoutX="200.0" layoutY="242.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my75" layoutX="200.0" layoutY="282.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my85" layoutX="200.0" layoutY="322.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my95" layoutX="200.0" layoutY="362.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my06" layoutX="240.0" layoutY="2.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my16" layoutX="240.0" layoutY="42.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my26" layoutX="240.0" layoutY="82.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my36" layoutX="240.0" layoutY="122.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my46" layoutX="240.0" layoutY="162.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my56" layoutX="240.0" layoutY="202.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my66" layoutX="240.0" layoutY="242.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my76" layoutX="240.0" layoutY="282.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my86" layoutX="240.0" layoutY="322.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my96" layoutX="240.0" layoutY="362.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my07" layoutX="280.0" layoutY="2.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my17" layoutX="280.0" layoutY="42.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my27" layoutX="280.0" layoutY="82.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my37" layoutX="280.0" layoutY="122.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my47" layoutX="280.0" layoutY="162.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my57" layoutX="280.0" layoutY="202.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my67" layoutX="280.0" layoutY="242.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my77" layoutX="280.0" layoutY="282.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my87" layoutX="280.0" layoutY="322.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my97" layoutX="280.0" layoutY="362.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my08" layoutX="320.0" layoutY="2.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my18" layoutX="320.0" layoutY="42.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my28" layoutX="320.0" layoutY="82.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my38" layoutX="320.0" layoutY="122.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my48" layoutX="320.0" layoutY="162.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my58" layoutX="320.0" layoutY="202.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my68" layoutX="320.0" layoutY="242.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my78" layoutX="320.0" layoutY="282.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my88" layoutX="320.0" layoutY="322.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my98" layoutX="320.0" layoutY="362.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my09" layoutX="360.0" layoutY="2.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my19" layoutX="360.0" layoutY="42.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my29" layoutX="360.0" layoutY="82.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my39" layoutX="360.0" layoutY="122.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my49" layoutX="360.0" layoutY="162.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my59" layoutX="360.0" layoutY="202.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my69" layoutX="360.0" layoutY="242.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my79" layoutX="360.0" layoutY="282.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my89" layoutX="360.0" layoutY="322.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+                  <Button fx:id="my99" layoutX="360.0" layoutY="362.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" textAlignment="CENTER" />
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <Label layoutX="707.0" layoutY="28.0" text="My field" textFill="#39ebff">
+         <font>
+            <Font name="Poppins Bold" size="14.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Label>
+      <Label layoutX="201.0" layoutY="28.0" text="Opponent field" textFill="RED">
+         <font>
+            <Font name="Poppins Bold" size="14.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Label>
+      <Label fx:id="whoseTurn" alignment="CENTER" layoutX="346.0" layoutY="29.0" prefHeight="18.0" prefWidth="298.0" textFill="WHITE">
+         <font>
+            <Font name="Poppins Bold" size="14.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Label>
    </children>
 </AnchorPane>

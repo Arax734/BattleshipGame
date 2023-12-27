@@ -1,9 +1,11 @@
 package com.example.battleship.gameFunctionality;
 
+import com.example.battleship.roomConnection.Client;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
@@ -13,10 +15,15 @@ import javafx.scene.layout.Pane;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class PrepareField implements Initializable{
     private boolean[][] battleField;
+    @FXML
+    private Label waitingMessage;
+    @FXML
+    private Button confirmPlacementButton;
     public Label singleShipLabel;
     public Label doubleShipLabel;
     public Label tripleShipLabel;
@@ -36,6 +43,7 @@ public class PrepareField implements Initializable{
     @FXML
     private Pane gameHolder;
 
+    private Client client;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -67,6 +75,55 @@ public class PrepareField implements Initializable{
         }
         else if(event.getCode() == KeyCode.S){
             this.showPlacement();
+        }
+    }
+    @FXML
+    protected void confirmPlacement(){
+//        if(!Objects.equals(this.singleShipLabel.getText(), "0") || !Objects.equals(this.doubleShipLabel.getText(), "0")
+//        || !Objects.equals(this.tripleShipLabel.getText(), "0") || !Objects.equals(this.quadrupleShipLabel.getText(), "0")){
+//            showError("Put every battleship on the board!");
+//            return;
+//        }
+        this.waitingMessage.setOpacity(1);
+        this.waitingMessage.setDisable(false);
+        this.confirmPlacementButton.setOpacity(0);
+        this.confirmPlacementButton.setDisable(true);
+        boolean[][] firstCheck = this.getClient().getRoom().getPlayer1();
+        for(int i=0; i<10; i++){
+            for(int j=0; j<10; j++){
+                if(firstCheck[i][j]){
+                    this.getClient().getRoom().setPlayer2(this.getBattleField());
+                    this.getClient().setPlacementDone(true);
+                    this.getClient().setOrder(2);
+                    int playersReady = 0;
+                    for(Client client : this.getClient().getRoom().getClients()){
+                        if(client.isPlacementDone()){
+                            playersReady++;
+                        }
+                    }
+                    if(playersReady == 2){
+                        for(Client client : this.getClient().getRoom().getClients()){
+                            client.startGame();
+                        }
+                    }
+                    return;
+                }
+            }
+        }
+        this.getClient().getRoom().setPlayer1(this.getBattleField());
+        this.getClient().getRoom().setClientTurn(this.getClient());
+        this.getClient().setPlacementDone(true);
+        this.getClient().setOrder(1);
+        int playersReady = 0;
+        for(Client client : this.getClient().getRoom().getClients()){
+            if(client.isPlacementDone()){
+                playersReady++;
+            }
+        }
+        if(playersReady == 2){
+            for(Client client : this.getClient().getRoom().getClients()){
+                client.startGame();
+            }
         }
     }
 
@@ -459,11 +516,11 @@ public class PrepareField implements Initializable{
     }
     @FXML
     protected void resetPlacement(){
-        for(int i=0; i<10; i++){
-            for(int j=0; j<10; j++){
-                this.getBattleField()[i][j] = false;
-            }
-        }
+//        for(int i=0; i<10; i++){
+//            for(int j=0; j<10; j++){
+//                this.getBattleField()[i][j] = false;
+//            }
+//        }
     }
     public Button getSelectedButton() {
         return selectedButton;
@@ -553,6 +610,22 @@ public class PrepareField implements Initializable{
                 return;
             }
         }
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    private void showError(String errorMessage) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText(errorMessage);
+        alert.showAndWait();
     }
 }
 

@@ -1,7 +1,9 @@
 package com.example.battleship.gameFunctionality;
+import com.example.battleship.roomConnection.Client;
 import com.example.battleship.roomConnection.Room;
 import com.example.battleship.roomConnection.Server;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
@@ -20,22 +22,36 @@ public class JoinRoom {
         if(!this.roomName.getText().isEmpty()){
             if(Server.getInstance().getRoom(this.roomName.getText()) != null){
                 if(Server.getInstance().getRoom(this.roomName.getText()).getClients().size() >= 2){
-                    System.out.println("Room is full");
+                    this.showError("Room is full!");
                 }
                 else{
                     Server.getInstance().getRoom(this.roomName.getText()).getClients().add(Server.getInstance().getClient(this.usernameLabel.getText()));
-                    System.out.println(this.usernameLabel.getText()+" joined "+this.roomName.getText());
-                    System.out.println("Players: "+Server.getInstance().getRoom(this.roomName.getText()).getClients().size());
+                    Server.getInstance().getClient(this.usernameLabel.getText()).setRoom(Server.getInstance().getRoom(this.roomName.getText()));
                 }
             }
             else{
-                System.out.println("Creating new room");
-                Server.getInstance().getRooms().put(this.roomName.getText(), new Room("room1"));
+                Server.getInstance().getRooms().put(this.roomName.getText(), new Room(this.roomName.getText()));
                 Server.getInstance().getRoom(this.roomName.getText()).getClients().add(Server.getInstance().getClient(this.usernameLabel.getText()));
-                System.out.println(this.usernameLabel.getText()+" joined "+this.roomName.getText());
-                System.out.println("Players: "+Server.getInstance().getRoom(this.roomName.getText()).getClients().size());
+                Server.getInstance().getClient(this.usernameLabel.getText()).setRoom(Server.getInstance().getRoom(this.roomName.getText()));
             }
         }
+
+        if(Server.getInstance().getRoom(this.roomName.getText()).getClients().size() == 2){
+            for(Client client : Server.getInstance().getRoom(this.roomName.getText()).getClients()){
+                client.prepareField();
+            }
+        }
+    }
+    public Room getRoom(){
+        return Server.getInstance().getClient(this.usernameLabel.getText()).getRoom();
+    }
+
+    private void showError(String errorMessage) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText(errorMessage);
+        alert.showAndWait();
     }
 }
 
