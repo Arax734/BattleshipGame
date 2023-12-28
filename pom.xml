@@ -7,7 +7,8 @@
     <groupId>com.example</groupId>
     <artifactId>Battleship</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>TicTacToe</name>
+    <packaging>jar</packaging>
+    <name>Battleship</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -15,6 +16,11 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.23</version>
+        </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
@@ -96,7 +102,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.example.tictactoe/com.example.tictactoe.HelloApplication</mainClass>
+                            <mainClass>com.example.battleship.HelloApplication</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>

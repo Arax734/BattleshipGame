@@ -1,4 +1,4 @@
-module com.example.tictactoe {
+module com.example.battleship {
     requires javafx.controls;
     requires javafx.fxml;
 

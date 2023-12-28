@@ -79,7 +79,7 @@ public class Game {
             if(this.getRoom().getClients().get(0).equals(this.getClient())){
                 opponent = this.getRoom().getClients().get(1);
             }else{
-                opponent = this.getRoom().getClients().get(0);
+                opponent = this.getRoom().getClients().getFirst();
             }
             String buttonID = ((Button)(event.getSource())).getId();
             char xChar = buttonID.charAt(buttonID.length() - 1);
@@ -183,20 +183,6 @@ public class Game {
             return this.getOpponentField()[y][x];
         }
     }
-    public void setPlacement(int x, int y, boolean state, Pane pane){
-        boolean[][] copiedBattleField;
-        if(pane.getId().equals("myHolder")){
-            copiedBattleField = this.getMyField();
-            copiedBattleField[y][x] = state;
-            this.setMyField(copiedBattleField);
-        }else{
-            copiedBattleField = this.getOpponentField();
-            copiedBattleField[y][x] = state;
-            this.setOpponentField(copiedBattleField);
-        }
-    }
-
-
 
     public int getRemainingFields() {
         return remainingFields;
@@ -210,16 +196,8 @@ public class Game {
         return myHolder;
     }
 
-    public void setMyHolder(Pane myHolder) {
-        this.myHolder = myHolder;
-    }
-
     public Pane getOpponentHolder() {
         return opponentHolder;
-    }
-
-    public void setOpponentHolder(Pane opponentHolder) {
-        this.opponentHolder = opponentHolder;
     }
 
     public boolean[][] getMyField() {
@@ -248,10 +226,6 @@ public class Game {
 
     public Label getTimerLabel() {
         return timerLabel;
-    }
-
-    public void setTimerLabel(Label timerLabel) {
-        this.timerLabel = timerLabel;
     }
 
     @FXML

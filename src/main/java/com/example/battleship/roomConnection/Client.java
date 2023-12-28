@@ -36,7 +36,6 @@ public class Client extends Thread {
         try {
             Socket socket = new Socket("localhost", 59090);
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 
             Platform.runLater(() -> {
                 try {

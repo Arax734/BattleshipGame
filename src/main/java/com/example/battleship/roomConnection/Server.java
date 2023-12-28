@@ -8,17 +8,14 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.sql.*;
 import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class Server {
 
     private static final int PORT = 2137;
-    private static final int MAX_STUDENTS = 250;
     private static Server instance;
-    private Set<PrintWriter> clients = new HashSet<>();
-    private Map<String, Set<PrintWriter>> roomClients = new ConcurrentHashMap<>();
+    private final Set<PrintWriter> clients = new HashSet<>();
     private final Map<String, Room> rooms = new HashMap<>();
-    private ArrayList<Client> allClients = new ArrayList<Client>();
+    private final ArrayList<Client> allClients = new ArrayList<Client>();
 
     public static void main(String[] args) {
         Server.getInstance().start();
@@ -55,18 +52,8 @@ public class Server {
         return this.rooms;
     }
 
-    public Room createRoom(String roomId) {
-        Room room = new Room(roomId);
-        rooms.put(roomId, room);
-        return room;
-    }
-
     public ArrayList<Client> getAllClients() {
         return allClients;
-    }
-
-    public void setAllClients(ArrayList<Client> allClients) {
-        this.allClients = allClients;
     }
 
     public Client getClient(String targetUsername) {
@@ -78,16 +65,12 @@ public class Server {
         return null;
     }
 
-    private class Handler implements Runnable {
+    private static class Handler implements Runnable {
         private BufferedReader in;
-        private PrintWriter out;
-        private String username;
-        private String currentRoom;
 
         public Handler(Socket socket) {
             try {
                 in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                out = new PrintWriter(socket.getOutputStream(), true);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -102,67 +85,15 @@ public class Server {
                     if (input == null) {
                         return;
                     }
-                    processInput(input);
                 }
             } catch (IOException e) {
                 e.printStackTrace();
-            } finally {
-                removeClient();
             }
         }
 
-        private void processInput(String input) {
-            if (input.startsWith("USERNAME:")) {
-                handleUsername(input.substring(9));
-            } else if (input.startsWith("JOIN_ROOM:")) {
-                handleJoinRoom(input.substring(10));
-            } else if (input.startsWith("MESSAGE:")) {
-                handleMessage(input.substring(8));
-            }
-        }
-
-        private void handleUsername(String username) {
-            this.username = username;
-            clients.add(out);
-            broadcast("Server: " + username + " has joined.");
-        }
-
-        private void handleJoinRoom(String roomName) {
-            if (currentRoom != null) {
-                roomClients.get(currentRoom).remove(out);
-            }
-
-            currentRoom = roomName;
-            roomClients.computeIfAbsent(roomName, k -> new HashSet<>()).add(out);
-
-            broadcast("Server: " + username + " has joined room: " + roomName);
-        }
-
-        private void handleMessage(String message) {
-            if (currentRoom != null) {
-                Set<PrintWriter> roomMembers = roomClients.get(currentRoom);
-                for (PrintWriter member : roomMembers) {
-                    member.println(username + ": " + message);
-                }
-            } else {
-                broadcast(username + ": " + message);
-            }
-        }
-
-        private void removeClient() {
-            clients.remove(out);
-            if (currentRoom != null) {
-                roomClients.get(currentRoom).remove(out);
-            }
-            broadcast("Server: " + username + " has left.");
-        }
     }
 
-    private void broadcast(String message) {
-        for (PrintWriter client : clients) {
-            client.println(message);
-        }
-    }
+
 
     public void createDatabase() throws IOException {
         try (ServerSocket serverSocket = new ServerSocket(PORT)) {

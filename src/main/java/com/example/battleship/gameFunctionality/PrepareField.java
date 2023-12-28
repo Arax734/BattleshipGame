@@ -44,6 +44,8 @@ public class PrepareField implements Initializable{
     private Pane gameHolder;
 
     private Client client;
+    @FXML
+    private Button resetPlacementButton;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -81,9 +83,10 @@ public class PrepareField implements Initializable{
     protected void confirmPlacement(){
         if(!Objects.equals(this.singleShipLabel.getText(), "0") || !Objects.equals(this.doubleShipLabel.getText(), "0")
         || !Objects.equals(this.tripleShipLabel.getText(), "0") || !Objects.equals(this.quadrupleShipLabel.getText(), "0")){
-            showError("Put every battleship on the board!");
+            showError();
             return;
         }
+        this.resetPlacementButton.setDisable(true);
         this.waitingMessage.setOpacity(1);
         this.waitingMessage.setDisable(false);
         this.confirmPlacementButton.setOpacity(0);
@@ -133,7 +136,7 @@ public class PrepareField implements Initializable{
         String backgroundColorStyle = "-fx-background-color: rgb(128,128,128);";
         if (this.recentHover != null && !this.tempChanged.isEmpty()) {
             this.recentHover.setStyle(backgroundColorStyleAdd);
-            Button pattern = this.tempChanged.get(0);
+            Button pattern = this.tempChanged.getFirst();
             String buttonID = pattern.getId();
             int x = Character.getNumericValue(buttonID.charAt(buttonID.length() - 1));
             int y = Character.getNumericValue(buttonID.charAt(buttonID.length() - 2));
@@ -516,11 +519,41 @@ public class PrepareField implements Initializable{
     }
     @FXML
     protected void resetPlacement(){
-//        for(int i=0; i<10; i++){
-//            for(int j=0; j<10; j++){
-//                this.getBattleField()[i][j] = false;
-//            }
-//        }
+        this.selectedButton = null;
+        this.singleShip.setUserData(4);
+        this.doubleShip.setUserData(3);
+        this.tripleShip.setUserData(2);
+        this.quadrupleShip.setUserData(1);
+        this.singleShipLabel.setText("4");
+        this.doubleShipLabel.setText("3");
+        this.tripleShipLabel.setText("2");
+        this.quadrupleShipLabel.setText("1");
+        for(int i=0; i<10; i++){
+            for(int j=0; j<10; j++){
+                this.battleField[i][j] = false;
+            }
+        }
+        this.tempChanged.clear();
+        this.recentHover = null;
+        this.canBePlaced = true;
+        for(Node button : this.gameHolder.getChildren()){
+            if (button instanceof Button currentButton) {
+                currentButton.setDisable(false);
+                String backgroundColorStyle = "-fx-background-color: rgb(128,128,128);";
+                currentButton.setStyle(backgroundColorStyle);
+                this.singleShip.setDisable(false);
+                this.singleShip.setStyle(backgroundColorStyle);
+                this.doubleShip.setDisable(false);
+                this.doubleShip.setStyle(backgroundColorStyle);
+                this.tripleShip.setDisable(false);
+                this.tripleShip.setStyle(backgroundColorStyle);
+                this.quadrupleShip.setDisable(false);
+                this.quadrupleShip.setStyle(backgroundColorStyle);
+                currentButton.setOnMouseExited(this::squareUnHover);
+                currentButton.setOnMouseEntered(this::squareHover);
+                currentButton.setOnAction(this::squareClicked);
+            }
+        }
     }
     public Button getSelectedButton() {
         return selectedButton;
@@ -620,11 +653,11 @@ public class PrepareField implements Initializable{
         this.client = client;
     }
 
-    private void showError(String errorMessage) {
+    private void showError() {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
         alert.setHeaderText(null);
-        alert.setContentText(errorMessage);
+        alert.setContentText("Put every battleship on the board!");
         alert.showAndWait();
     }
 }

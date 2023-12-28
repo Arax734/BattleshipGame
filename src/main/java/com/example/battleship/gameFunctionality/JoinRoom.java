@@ -33,7 +33,7 @@ public class JoinRoom implements Initializable {
         if(!this.roomName.getText().isEmpty()){
             if(Server.getInstance().getRoom(this.roomName.getText()) != null){
                 if(Server.getInstance().getRoom(this.roomName.getText()).getClients().size() >= 2){
-                    this.showError("Room is full!");
+                    this.showError();
                     return;
                 }
                 else{
@@ -58,15 +58,12 @@ public class JoinRoom implements Initializable {
         this.waitingMessage.setDisable(false);
         this.waitingMessage.setOpacity(1);
     }
-    public Room getRoom(){
-        return Server.getInstance().getClient(this.usernameLabel.getText()).getRoom();
-    }
 
-    private void showError(String errorMessage) {
+    private void showError() {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
         alert.setHeaderText(null);
-        alert.setContentText(errorMessage);
+        alert.setContentText("Room is full!");
         alert.showAndWait();
     }
 

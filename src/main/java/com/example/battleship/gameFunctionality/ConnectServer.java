@@ -1,7 +1,6 @@
 package com.example.battleship.gameFunctionality;
 import com.example.battleship.roomConnection.Client;
 import com.example.battleship.roomConnection.Server;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
@@ -14,21 +13,21 @@ public class ConnectServer {
     TextField usernameField;
 
     @FXML
-    protected void connectToServer(ActionEvent actionEvent) throws IOException{
+    protected void connectToServer() throws IOException{
         for(Client client : Server.getInstance().getAllClients()){
             if(client.getUsername().equals(usernameField.getText())){
-                showError("Username is already taken!");
+                showError();
                 return;
             }
         }
         new Client(this.usernameField.getText()).start();
     }
 
-    private void showError(String errorMessage) {
+    private void showError() {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
         alert.setHeaderText(null);
-        alert.setContentText(errorMessage);
+        alert.setContentText("Username is already taken!");
         alert.showAndWait();
     }
 }

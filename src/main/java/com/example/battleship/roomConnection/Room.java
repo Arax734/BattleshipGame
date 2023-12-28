@@ -2,7 +2,6 @@ package com.example.battleship.roomConnection;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.control.Label;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -35,7 +34,6 @@ public class Room {
                 this.player2[i][j] = false;
             }
         }
-        Label timerLabel = new Label("00:00");
 
         EventHandler<ActionEvent> eventHandler = new EventHandler<ActionEvent>() {
             @Override
@@ -80,39 +78,24 @@ public class Room {
     public String getRoomId() {
         return roomId;
     }
-
     public List<Client> getClients() {
         return clients;
     }
-
-    public void addClient(Client client) {
-        clients.add(client);
-    }
-
-    public boolean isFull() {
-        return clients.size() >= 2;
-    }
-
     public boolean[][] getPlayer1() {
         return player1;
     }
-
     public void setPlayer1(boolean[][] player1) {
         this.player1 = player1;
     }
-
     public boolean[][] getPlayer2() {
         return player2;
     }
-
     public void setPlayer2(boolean[][] player2) {
         this.player2 = player2;
     }
-
     public Client getClientTurn() {
         return clientTurn;
     }
-
     public void setClientTurn(Client clientTurn) {
         this.clientTurn = clientTurn;
     }
