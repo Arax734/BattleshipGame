@@ -1,4 +1,4 @@
-# Battleships Game Desciption
+# Battleship Game Desciption
 
 A battleship game developed in JavaFX. The application is a network game using a database. A player is able to create a room and another joins it. Each room is a separate thread, allowing games to be played in parallel. It uses mySQL database to collect leaderboard stats.
 
