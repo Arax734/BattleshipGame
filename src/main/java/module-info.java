@@ -7,6 +7,7 @@ module com.example.battleship {
     requires com.almasb.fxgl.all;
     requires java.sql;
     requires mysql.connector.j;
+    requires javafx.media;
 
     opens com.example.battleship to javafx.fxml;
     exports com.example.battleship;

@@ -12,6 +12,8 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -46,6 +48,20 @@ public class PrepareField implements Initializable{
     private Client client;
     @FXML
     private Button resetPlacementButton;
+    private MediaPlayer mediaPlayer;
+    private void playClickSound() {
+        String MP3_FILE_PATH = "/click.wav";
+        Media media = new Media(getClass().getResource(MP3_FILE_PATH).toString());
+        mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.play();
+    }
+
+    private void playPlaceSound(){
+        String MP3_FILE_PATH = "/place.wav";
+        Media media = new Media(getClass().getResource(MP3_FILE_PATH).toString());
+        mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.play();
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -75,12 +91,10 @@ public class PrepareField implements Initializable{
         if (event.getCode() == KeyCode.R) {
             onRKeyPressed();
         }
-        else if(event.getCode() == KeyCode.S){
-            this.showPlacement();
-        }
     }
     @FXML
     protected void confirmPlacement(){
+        playClickSound();
         if(!Objects.equals(this.singleShipLabel.getText(), "0") || !Objects.equals(this.doubleShipLabel.getText(), "0")
         || !Objects.equals(this.tripleShipLabel.getText(), "0") || !Objects.equals(this.quadrupleShipLabel.getText(), "0")){
             showError();
@@ -131,6 +145,7 @@ public class PrepareField implements Initializable{
     }
 
     private void onRKeyPressed() {
+        playClickSound();
         this.canBePlaced = true;
         String backgroundColorStyleAdd = "-fx-background-color: rgb(107,255,151)";
         String backgroundColorStyle = "-fx-background-color: rgb(128,128,128);";
@@ -449,6 +464,7 @@ public class PrepareField implements Initializable{
     }
     @FXML
     protected void squareClicked(ActionEvent event){
+        playPlaceSound();
         String buttonID = ((Button)(event.getSource())).getId();
         char xChar = buttonID.charAt(buttonID.length() - 1);
         int x = Character.getNumericValue(xChar);
@@ -502,6 +518,7 @@ public class PrepareField implements Initializable{
 
     @FXML
     protected void chooseBattleship(ActionEvent event){
+        playClickSound();
         Button clicked = (Button)(event.getSource());
         if(clicked.getId().equals("singleShip") || clicked.getId().equals("doubleShip") ||
                 clicked.getId().equals("tripleShip") || clicked.getId().equals("quadrupleShip")){
@@ -519,6 +536,7 @@ public class PrepareField implements Initializable{
     }
     @FXML
     protected void resetPlacement(){
+        playClickSound();
         this.selectedButton = null;
         this.singleShip.setUserData(4);
         this.doubleShip.setUserData(3);

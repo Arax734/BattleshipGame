@@ -93,8 +93,6 @@ public class Server {
 
     }
 
-
-
     public void createDatabase() throws IOException {
         try (ServerSocket serverSocket = new ServerSocket(PORT)) {
             String url = "jdbc:mysql://localhost";

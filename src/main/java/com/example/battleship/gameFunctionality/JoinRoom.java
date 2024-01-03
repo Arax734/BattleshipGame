@@ -7,6 +7,8 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 import java.net.URL;
 import java.sql.*;
@@ -23,13 +25,23 @@ public class JoinRoom implements Initializable {
     private Button confirmPlacementButton;
     @FXML
     private Label waitingMessage;
+    private MediaPlayer mediaPlayer;
+
 
     public void setUsernameLabel(String username) {
         usernameLabel.setText(username);
     }
 
+    private void playClickSound() {
+        String MP3_FILE_PATH = "/click.wav";
+        Media media = new Media(getClass().getResource(MP3_FILE_PATH).toString());
+        mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.play();
+    }
+
     @FXML
     protected void confirm(){
+        playClickSound();
         if(!this.roomName.getText().isEmpty()){
             if(Server.getInstance().getRoom(this.roomName.getText()) != null){
                 if(Server.getInstance().getRoom(this.roomName.getText()).getClients().size() >= 2){

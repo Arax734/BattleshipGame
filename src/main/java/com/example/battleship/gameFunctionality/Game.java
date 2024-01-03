@@ -10,6 +10,8 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -35,7 +37,20 @@ public class Game {
     private Room room;
     private int remainingFields;
     private int moveCounter;
+    private MediaPlayer mediaPlayer;
+    private void playClickSound() {
+        String MP3_FILE_PATH = "/click.wav";
+        Media media = new Media(getClass().getResource(MP3_FILE_PATH).toString());
+        mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.play();
+    }
 
+    private void playPlaceSound(){
+        String MP3_FILE_PATH = "/place.wav";
+        Media media = new Media(getClass().getResource(MP3_FILE_PATH).toString());
+        mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.play();
+    }
     public void loadData() {
         this.room = this.getClient().getRoom();
         this.moveCounter = 0;
@@ -69,6 +84,7 @@ public class Game {
 
     @FXML
     protected void squareClicked(ActionEvent event) throws SQLException {
+        playPlaceSound();
         if(this.getRoom().getClientTurn().equals(this.getClient())){
             if(this.getRoom().timeline.getStatus() != Timeline.Status.RUNNING){
                 this.getRoom().startTimer();
@@ -153,10 +169,6 @@ public class Game {
         return room;
     }
 
-    public void setRoom(Room room) {
-        this.room = room;
-    }
-
     public Button getButton(int xTarget, int yTarget, Pane pane){
         for (Node node : pane.getChildren()) {
             if (node instanceof Button button) {
@@ -230,6 +242,7 @@ public class Game {
 
     @FXML
     protected void leaveGame(){
+        playClickSound();
         for(Client client : this.getRoom().getClients()){
             client.endGame();
         }
