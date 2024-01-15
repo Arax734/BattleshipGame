@@ -1,9 +1,12 @@
 package com.example.battleship.roomConnection;
 
+import javafx.application.Platform;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.sql.*;
@@ -29,8 +32,9 @@ public class Server {
     }
 
     public void start() {
-        try (ServerSocket serverSocket = new ServerSocket(59090)) {
+        try (ServerSocket serverSocket = new ServerSocket(PORT, 0, InetAddress.getLocalHost())) {
             System.out.println("Server is running...");
+            System.out.println(InetAddress.getLocalHost().getHostAddress());
             createDatabase();
             while (true) {
                 Socket socket = serverSocket.accept();
@@ -79,48 +83,58 @@ public class Server {
         @Override
         public void run() {
             try {
-
                 while (true) {
                     String input = in.readLine();
                     if (input == null) {
                         return;
                     }
+
+                    // Print the received message on the server
+                    System.out.println("Received from client: " + input);
+
+                    // Add your logic to process the received message
+                    handleInput(input);
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
 
+        private void handleInput(String input) {
+            // Implement your logic to handle the received message
+            // You can use the 'input' parameter to determine the action
+            // For example, you can switch on the input and perform different actions.
+        }
     }
 
     public void createDatabase() throws IOException {
-        try (ServerSocket serverSocket = new ServerSocket(PORT)) {
+        try (ServerSocket serverSocket = new ServerSocket(8080)) {
             String url = "jdbc:mysql://localhost";
             String user = "root";
             String password = "";
 
             Connection connection = null;
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
 
-            connection = DriverManager.getConnection(url, user, password);
+                connection = DriverManager.getConnection(url, user, password);
 
-            if (!databaseExists(connection)) {
-                try {
-                    createDatabase(connection);
-                } catch (Exception e) {
-                    e.printStackTrace();
+                if (!databaseExists(connection)) {
+                    try {
+                        createDatabase(connection);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
-            }
-            connection.close();
-            connection = DriverManager.getConnection(url+"/battleships", user, password);
+                connection.close();
+                connection = DriverManager.getConnection(url+"/battleships", user, password);
 
-            if (!tableExists(connection)){
-                createLeaderboard(connection);
+                if (!tableExists(connection)){
+                    createLeaderboard(connection);
+                }
+            } catch (SQLException | ClassNotFoundException e) {
+                throw new RuntimeException(e);
             }
-        } catch (SQLException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
         }
     }
     private static boolean databaseExists(Connection connection) throws SQLException {

@@ -38,4 +38,3 @@ public class ConnectServer {
         alert.showAndWait();
     }
 }
-

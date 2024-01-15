@@ -146,14 +146,15 @@ public class Game {
                     return;
                 }
             }else{
+                this.getRoom().setClientTurn(opponent);
+                this.whoseTurn.setText("It's your opponent's turn");
+                opponent.getPlayerGUI().whoseTurn.setText("It's your turn");
                 backgroundColorStyle = "-fx-background-color: darkblue";
                 this.getButton(x,y,pane).setStyle(backgroundColorStyle);
                 this.getButton(x,y,pane).setDisable(true);
                 opponent.getPlayerGUI().getButton(x,y,opponent.getPlayerGUI().getMyHolder()).setStyle(backgroundColorStyle);
             }
-            this.getRoom().setClientTurn(opponent);
-            this.whoseTurn.setText("It's your opponent's turn");
-            opponent.getPlayerGUI().whoseTurn.setText("It's your turn");
+
         }
     }
 

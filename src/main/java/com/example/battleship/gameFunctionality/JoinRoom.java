@@ -26,6 +26,7 @@ public class JoinRoom implements Initializable {
     @FXML
     private Label waitingMessage;
     private MediaPlayer mediaPlayer;
+    private Client client;
 
 
     public void setUsernameLabel(String username) {
@@ -40,7 +41,7 @@ public class JoinRoom implements Initializable {
     }
 
     @FXML
-    protected void confirm(){
+    protected void confirm() {
         playClickSound();
         if(!this.roomName.getText().isEmpty()){
             if(Server.getInstance().getRoom(this.roomName.getText()) != null){
@@ -103,6 +104,14 @@ public class JoinRoom implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 }
 

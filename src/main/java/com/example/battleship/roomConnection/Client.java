@@ -16,6 +16,7 @@ import java.io.PrintWriter;
 import java.net.Socket;
 
 public class Client extends Thread {
+    private PrintWriter out;
     public Stage recentStage;
     private final String username;
     private Room room;
@@ -34,11 +35,13 @@ public class Client extends Thread {
     @Override
     public void run() {
         try {
-            Socket socket = new Socket("localhost", 59090);
+            Socket socket = new Socket("192.168.55.112", 2137);
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            out = new PrintWriter(socket.getOutputStream(), true);
 
             Platform.runLater(() -> {
                 try {
+                    this.sendMessage("Hello server! I am "+this.username);
                     Server.getInstance().getAllClients().add(this);
                     FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("join-room.fxml"));
                     Scene scene = new Scene(fxmlLoader.load());
@@ -67,6 +70,11 @@ public class Client extends Thread {
 
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+    public void sendMessage(String message) {
+        if (out != null) {
+            out.println(message);
         }
     }
     public void prepareField() {
