@@ -2,10 +2,7 @@ package com.example.battleship.roomConnection;
 
 import javafx.application.Platform;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -70,41 +67,38 @@ public class Server {
     }
 
     private static class Handler implements Runnable {
-        private BufferedReader in;
-
+        private final Socket socket;
+        private Server server;
         public Handler(Socket socket) {
-            try {
-                in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            this.socket = socket;
+            this.server = server;
         }
 
         @Override
         public void run() {
-            try {
+            try (
+                    ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
+                    ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream())
+            ) {
                 while (true) {
-                    String input = in.readLine();
-                    if (input == null) {
+                    Object receivedObject = objectInputStream.readObject();
+                    if (receivedObject == null) {
                         return;
                     }
 
-                    // Print the received message on the server
-                    System.out.println("Received from client: " + input);
+                    if (receivedObject instanceof DataTemplate) {
+                        Client receivedClient = ((DataTemplate) receivedObject).getClient();
 
-                    // Add your logic to process the received message
-                    handleInput(input);
+                    }
+                    else if(receivedObject instanceof String){
+                        System.out.println(receivedObject);
+                    }
                 }
-            } catch (IOException e) {
+            } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
             }
         }
 
-        private void handleInput(String input) {
-            // Implement your logic to handle the received message
-            // You can use the 'input' parameter to determine the action
-            // For example, you can switch on the input and perform different actions.
-        }
     }
 
     public void createDatabase() throws IOException {

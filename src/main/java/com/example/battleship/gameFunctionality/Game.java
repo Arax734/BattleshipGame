@@ -17,6 +17,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class Game {
     @FXML
@@ -32,7 +33,9 @@ public class Game {
     @FXML
     private Label whoseTurn;
     private boolean[][] myField;
+    private ArrayList<Ship> myShips;
     private boolean[][] opponentField;
+    private ArrayList<Ship> opponentShips;
     private Client client;
     private Room room;
     private int remainingFields;
@@ -51,6 +54,13 @@ public class Game {
         mediaPlayer = new MediaPlayer(media);
         mediaPlayer.play();
     }
+
+    private void playExplosionSound(){
+        String MP3_FILE_PATH = "/explosion.wav";
+        Media media = new Media(getClass().getResource(MP3_FILE_PATH).toString());
+        mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.play();
+    }
     public void loadData() {
         this.room = this.getClient().getRoom();
         this.moveCounter = 0;
@@ -63,10 +73,14 @@ public class Game {
         this.remainingFields = 20;
         if(this.getClient().getOrder() == 1){
             this.setOpponentField(this.getRoom().getPlayer2());
+            this.setOpponentShips(this.getRoom().getPlayer2Ships());
             this.setMyField(this.getRoom().getPlayer1());
+            this.setMyShips(this.getRoom().getPlayer1Ships());
         }else{
             this.setOpponentField(this.getRoom().getPlayer1());
+            this.setOpponentShips(this.getRoom().getPlayer1Ships());
             this.setMyField(this.getRoom().getPlayer2());
+            this.setMyShips(this.getRoom().getPlayer2Ships());
         }
         for(Node button : this.getMyHolder().getChildren()){
             button.setDisable(true);
@@ -110,8 +124,52 @@ public class Game {
                 this.getButton(x,y,pane).setStyle(backgroundColorStyle);
                 this.getButton(x,y,pane).setDisable(true);
 
-                backgroundColorStyle = "-fx-background-color: red";
                 opponent.getPlayerGUI().getButton(x,y,opponent.getPlayerGUI().getMyHolder()).setStyle(backgroundColorStyle);
+
+                for(Ship ship : this.getOpponentShips()){
+                    for(ShipElement shipElement : ship.getShipElements()){
+                        if(shipElement.getButtonID().equals(buttonID)){
+                            shipElement.setHit(true);
+                            if(ship.getShipElements().size() < 2){
+                                String buttonShip = shipElement.getButtonID();
+                                char xShipString = buttonShip.charAt(buttonShip.length() - 1);
+                                int xShip = Character.getNumericValue(xShipString);
+                                char yShipString = buttonShip.charAt(buttonShip.length() - 2);
+                                int yShip = Character.getNumericValue(yShipString);
+                                this.getButton(xShip,yShip,getOpponentHolder()).setStyle("-fx-background-color: red");
+                                opponent.getPlayerGUI().getButton(xShip,yShip,opponent.getPlayerGUI().getMyHolder()).setStyle("-fx-background-color: red");
+                                ship.setSunk(true);
+                                playExplosionSound();
+                                opponent.getPlayerGUI().playExplosionSound();
+                            }
+                        }
+                    }
+                }
+
+                for(Ship ship : this.getOpponentShips()){
+                    if(!ship.isSunk()){
+                        boolean finish = false;
+                        for(ShipElement shipElement : ship.getShipElements()){
+                            if(!shipElement.isHit()){
+                                finish = true;
+                            }
+                        }
+                        if(!finish) {
+                            for (ShipElement shipElement : ship.getShipElements()) {
+                                String buttonShip = shipElement.getButtonID();
+                                char xShipString = buttonShip.charAt(buttonShip.length() - 1);
+                                int xShip = Character.getNumericValue(xShipString);
+                                char yShipString = buttonShip.charAt(buttonShip.length() - 2);
+                                int yShip = Character.getNumericValue(yShipString);
+                                this.getButton(xShip, yShip, getOpponentHolder()).setStyle("-fx-background-color: red");
+                                opponent.getPlayerGUI().getButton(xShip, yShip, opponent.getPlayerGUI().getMyHolder()).setStyle("-fx-background-color: red");
+                                ship.setSunk(true);
+                                playExplosionSound();
+                                opponent.getPlayerGUI().playExplosionSound();
+                            }
+                        }
+                    }
+                }
 
                 if(opponent.getPlayerGUI().getRemainingFields() <= 0){
                     this.getRoom().pauseTimer();
@@ -149,7 +207,7 @@ public class Game {
                 this.getRoom().setClientTurn(opponent);
                 this.whoseTurn.setText("It's your opponent's turn");
                 opponent.getPlayerGUI().whoseTurn.setText("It's your turn");
-                backgroundColorStyle = "-fx-background-color: darkblue";
+                backgroundColorStyle = "-fx-background-color: black";
                 this.getButton(x,y,pane).setStyle(backgroundColorStyle);
                 this.getButton(x,y,pane).setDisable(true);
                 opponent.getPlayerGUI().getButton(x,y,opponent.getPlayerGUI().getMyHolder()).setStyle(backgroundColorStyle);
@@ -249,5 +307,22 @@ public class Game {
         }
         this.getRoom().getClients().clear();
         Server.getInstance().getRooms().remove(this.getRoom().getRoomId());
+    }
+
+
+    public ArrayList<Ship> getMyShips() {
+        return myShips;
+    }
+
+    public void setMyShips(ArrayList<Ship> myShips) {
+        this.myShips = myShips;
+    }
+
+    public ArrayList<Ship> getOpponentShips() {
+        return opponentShips;
+    }
+
+    public void setOpponentShips(ArrayList<Ship> opponentShips) {
+        this.opponentShips = opponentShips;
     }
 }

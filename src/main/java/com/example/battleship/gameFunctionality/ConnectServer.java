@@ -6,6 +6,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -13,6 +14,7 @@ public class ConnectServer {
     private MediaPlayer mediaPlayer;
     @FXML
     TextField usernameField;
+    private Stage stage;
     private void playClickSound() {
         String MP3_FILE_PATH = "/click.wav";
         Media media = new Media(getClass().getResource(MP3_FILE_PATH).toString());
@@ -36,5 +38,9 @@ public class ConnectServer {
         alert.setHeaderText(null);
         alert.setContentText("Username is already taken!");
         alert.showAndWait();
+    }
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
     }
 }

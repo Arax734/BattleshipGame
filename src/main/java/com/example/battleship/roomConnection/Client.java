@@ -9,14 +9,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
+import java.net.InetAddress;
 import java.net.Socket;
 
 public class Client extends Thread {
-    private PrintWriter out;
+    private transient ObjectOutputStream objectOutputStream;
+    private transient ObjectInputStream objectInputStream;
     public Stage recentStage;
     private final String username;
     private Room room;
@@ -35,9 +34,9 @@ public class Client extends Thread {
     @Override
     public void run() {
         try {
-            Socket socket = new Socket("192.168.55.112", 2137);
-            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            out = new PrintWriter(socket.getOutputStream(), true);
+            Socket socket = new Socket(InetAddress.getLocalHost(), 2137);
+            objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
+            objectInputStream = new ObjectInputStream(socket.getInputStream());
 
             Platform.runLater(() -> {
                 try {
@@ -62,19 +61,31 @@ public class Client extends Thread {
             });
 
             while (!isInterrupted()) {
-                String message = in.readLine();
-                if (message != null) {
-                    System.out.println(message);
+                Object receivedObject = objectInputStream.readObject();
+                if (receivedObject != null) {
+                    handleReceivedObject(receivedObject);
                 }
             }
 
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
     }
-    public void sendMessage(String message) {
-        if (out != null) {
-            out.println(message);
+    public void sendMessage(Serializable object) {
+        try {
+            if (objectOutputStream != null) {
+                objectOutputStream.writeObject(object);
+                objectOutputStream.flush();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    private void handleReceivedObject(Object receivedObject) {
+        if (receivedObject instanceof String) {
+            System.out.println((String) receivedObject);
         }
     }
     public void prepareField() {

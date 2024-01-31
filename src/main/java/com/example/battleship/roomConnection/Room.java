@@ -1,8 +1,10 @@
 package com.example.battleship.roomConnection;
 
+import com.example.battleship.gameFunctionality.Ship;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
+import java.lang.reflect.Array;
 import java.util.List;
 import java.util.ArrayList;
 import javafx.animation.KeyFrame;
@@ -14,6 +16,8 @@ public class Room {
     private final List<Client> clients;
     private boolean[][] player1;
     private boolean[][] player2;
+    private ArrayList<Ship> player1Ships;
+    private ArrayList<Ship> player2Ships;
 
     public int elapsedTimeSeconds = 0;
     public int elapsedTimeMinutes = 0;
@@ -98,5 +102,21 @@ public class Room {
     }
     public void setClientTurn(Client clientTurn) {
         this.clientTurn = clientTurn;
+    }
+
+    public ArrayList<Ship> getPlayer1Ships() {
+        return player1Ships;
+    }
+
+    public void setPlayer1Ships(ArrayList<Ship> player1Ships) {
+        this.player1Ships = player1Ships;
+    }
+
+    public ArrayList<Ship> getPlayer2Ships() {
+        return player2Ships;
+    }
+
+    public void setPlayer2Ships(ArrayList<Ship> player2Ships) {
+        this.player2Ships = player2Ships;
     }
 }

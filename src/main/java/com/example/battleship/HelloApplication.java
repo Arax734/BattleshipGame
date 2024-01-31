@@ -1,5 +1,6 @@
 package com.example.battleship;
 
+import com.example.battleship.gameFunctionality.ConnectServer;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -12,6 +13,10 @@ public class HelloApplication extends Application{
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("connect-server.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
+
+        ConnectServer connectServerController = fxmlLoader.getController();
+        connectServerController.setStage(stage);
+
         stage.setTitle("Server Connection");
         stage.setScene(scene);
         stage.show();

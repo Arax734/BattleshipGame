@@ -114,4 +114,3 @@ public class JoinRoom implements Initializable {
         this.client = client;
     }
 }
-

@@ -22,6 +22,7 @@ import java.util.ResourceBundle;
 
 public class PrepareField implements Initializable{
     private boolean[][] battleField;
+    private ArrayList<Ship> ships;
     @FXML
     private Label waitingMessage;
     @FXML
@@ -80,6 +81,7 @@ public class PrepareField implements Initializable{
                 this.battleField[i][j] = false;
             }
         }
+        this.ships = new ArrayList<Ship>();
         this.tempChanged = new ArrayList<Button>();
         this.recentHover = null;
         gameHolder.setOnKeyPressed(this::handleKeyPress);
@@ -110,6 +112,7 @@ public class PrepareField implements Initializable{
             for(int j=0; j<10; j++){
                 if(firstCheck[i][j]){
                     this.getClient().getRoom().setPlayer2(this.getBattleField());
+                    this.getClient().getRoom().setPlayer2Ships(this.getShips());
                     this.getClient().setPlacementDone(true);
                     this.getClient().setOrder(2);
                     int playersReady = 0;
@@ -128,6 +131,7 @@ public class PrepareField implements Initializable{
             }
         }
         this.getClient().getRoom().setPlayer1(this.getBattleField());
+        this.getClient().getRoom().setPlayer1Ships(this.getShips());
         this.getClient().getRoom().setClientTurn(this.getClient());
         this.getClient().setPlacementDone(true);
         this.getClient().setOrder(1);
@@ -479,6 +483,9 @@ public class PrepareField implements Initializable{
             clicked.setOnMouseExited(null);
             clicked.setOnMouseEntered(null);
             clicked.setOnAction(null);
+            Ship ship = new Ship();
+            ShipElement mainShipElement = new ShipElement(clicked.getId());
+            ship.getShipElements().add(mainShipElement);
             if(this.getSelectedButton().getId().equals("singleShip")){
                 this.singleShipLabel.setText(Integer.toString((int)this.getSelectedButton().getUserData()));
             }
@@ -499,7 +506,10 @@ public class PrepareField implements Initializable{
                 String backgroundColorStyleUnclicked = "-fx-background-color: rgb(128,128,128);";
                 this.getSelectedButton().setStyle(backgroundColorStyleUnclicked);
             }
+
             for (Button button : this.tempChanged) {
+                ShipElement shipElement = new ShipElement(button.getId());
+                ship.getShipElements().add(shipElement);
                 button.setStyle(backgroundColorStyle);
                 button.setOnMouseExited(null);
                 button.setOnMouseEntered(null);
@@ -511,6 +521,7 @@ public class PrepareField implements Initializable{
                 int recenty = Character.getNumericValue(recentyChar);
                 this.setPlacement(recentx,recenty, true);
             }
+            this.getShips().add(ship);
             this.tempChanged.clear();
             this.setSelectedButton(null);
         }
@@ -677,6 +688,14 @@ public class PrepareField implements Initializable{
         alert.setHeaderText(null);
         alert.setContentText("Put every battleship on the board!");
         alert.showAndWait();
+    }
+
+    public ArrayList<Ship> getShips() {
+        return ships;
+    }
+
+    public void setShips(ArrayList<Ship> ships) {
+        this.ships = ships;
     }
 }
 
